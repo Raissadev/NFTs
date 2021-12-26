@@ -5,6 +5,7 @@ namespace App\Models;
 use Src\Repository\NFTRepository;
 use Src\Repository\ShopVendorRepository;
 use Src\Repository\UserRepository;
+use Src\Repository\VendorRepository;
 use Src\Helpers\MessageAuth;
 
 class Market extends NFTRepository
@@ -30,7 +31,7 @@ class Market extends NFTRepository
 
     public function getOwner(int $id): array
     {
-        $fetch = UserRepository::schemaGetOwner($id);
+        $fetch = VendorRepository::schemaGetOwner($id);
         return $fetch;
     }
 

@@ -1,6 +1,5 @@
 <div class="divisor"></div>
 
-
 <section class="container-shop mr-top-small mr-bottom-default">
     <div class="wrap w90 center">
         <figure class="img-bigguer-banner-shop">
@@ -21,7 +20,7 @@
         <div class="title mr-bottom-default text-center">
             <h2 class="font-size-default">NFTs <?= $params['shop']['name'] ?> 🔥</h2>
         </div>
-        <div class="list-nfts items-flex">
+        <div class="list-nfts items-flex flex-wrap">
             <?php
                  foreach($params['nfts'] as $nft){
                     include 'components/box-nft.php';

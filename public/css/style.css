@@ -172,7 +172,7 @@ section.container-shop figure.img-user-very-bigger img{
 section.container-shop-vendor-nfts .box{
     min-width: 30%;
     max-width: 30%;
-    margin-right: 2%;
+    margin: 1.5% 1%;
 }
 
 /* Globals NFTs */
@@ -192,4 +192,38 @@ section.container-form  form.form-blockchain{
 }
 section.container-form  form.form-profile input, section.container-form  form.form-profile input[type="file"]::-webkit-file-upload-button, form.wallet input{
     background-color: var(--black);
+}
+
+
+
+@media screen and (max-width: 800px){
+
+    main.welcome .row .box .col{
+        min-width: 100%;
+        border: 0 !important;
+    }
+    section.container-list ul li {
+        min-width: 100%;
+        max-width: 100%;
+        margin: 2% 0;
+    }
+    section.container-nfts .list-nfts .box-nft, section.container-collections div.box-nft, section.container-shop .box, section.container-shop-vendor-nfts .box{
+        min-width: 100%;
+        max-width: 100%;
+        margin:2% 0;
+    }
+    header nav.menu{
+        position: absolute;
+        top:100%;
+        left:0;
+        width: 100%;
+        min-height: 30vh;
+        background-color: var(--black-strong);
+        animation: fadeInTop .9s;
+    }
+    header nav.menu li{
+        width: 100%;
+        margin: 2% 2%;
+    }
+
 }

@@ -16,16 +16,19 @@
         <div class="col w15 logo">
             <h1><a>Raissa<span style="color:var(--purple-weak);">Coin</span></a></h1>
         </div>
-        <nav class="w60 menu">
-            <ul class="col items-flex align-center">
+        <nav class="w60 aside-nav menu hide-dv-small">
+            <ul class="col items-flex align-center flex-wrap-dv-small">
                 <li><a href="/home">Home</a></li>
                 <li><a href="/market">Market</a></li>
                 <li><a href="/global-nfts">Global NFTs</a></li>
                 <li><a href="/wallet">Wallet</a></li>
-                <li><a href="/become-vendor?type=vendor">Become Vendor</a></li>
+                <li><a href="<?= $params['isUser']['TypeLink'] ?>"><?= $params['isUser']['TypeUser'] ?></a></li>
             </ul>
         </nav>
-        <nav class="col w25 items-flex align-center just-end">
+        <nav class="col items-flex align-center hide-dv-bigger">
+            <a class="toggle"><i class="ri-menu-3-line"></i></a>
+        </nav>
+        <nav class="col w25 items-flex align-center just-end hide-dv-small">
             <a href="/wallet" class="button button-form button-clean button-default mr-right-small">Create Wallet</a>
             <a href="<?= $params['isUser']['Link'] ?>" class="button button-default"><?= $params['isUser']['Text'] ?></a>
         </nav>

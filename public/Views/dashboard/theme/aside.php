@@ -28,11 +28,11 @@
                     foreach($params['owners'] as $owner){
                 ?>
                 <li class="items-flex align-center mr-bottom-small">
-                    <figure class="img-small mr-right-small">
+                    <figure class="img-small mr-right-small w20">
                         <img src="<?= BASE_STORAGE_USERS ?>/<?= $owner['image'] ?>" />
                     </figure>
-                    <div class="row items-flex align-center">
-                        <div class="w50 mr-right-small">
+                    <div class="row items-flex align-center w70">
+                        <div class="w70 mr-right-small">
                             <h5 class="limit-line-one"> <?= $owner['name'] ?> </h5>
                             <p class="font-size-small limit-line-one"><?= $owner['email'] ?></p>
                         </div>
@@ -48,3 +48,5 @@
 </aside>
 
 </main>
+
+<script src="<?= BASE_PATH ?>/js/global.js"></script>

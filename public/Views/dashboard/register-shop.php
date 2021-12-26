@@ -2,12 +2,12 @@
 <section class="container-form">
     <div class="wrap w95 center">
         <form method="POST" action="/dashboard/register-shop" enctype="multipart/form-data" class="form-box items-flex flex-wrap just-space-between">
-            <div class="w50">    
+            <div class="w50 w100-dv-small mr-dv-bottom-small">    
                 <input type="text" name="name" class="w100 mr-bottom-small" placeholder="Name of your NFT" />
                 <input type="file" name="banner" class="w100 mr-bottom-small" />
                 <button type="submit" name="register-shop" class="w100">Register Shop <i class="ri-quill-pen-fill mr-left-small"></i></button>
             </div>
-            <div class="w40">
+            <div class="w40 w100-dv-small">
                 <label class="send-file mr-bottom-small">
                     <i class="ri-landscape-fill"></i>
                 </label>

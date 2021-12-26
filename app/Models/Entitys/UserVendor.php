@@ -2,14 +2,15 @@
 
 namespace App\Models\Entitys;
 
+use App\Services\QuerysDatabase\QuerySeter;
+use App\Services\QuerysDatabase\QueryInserter;
 use Src\Repository\NFTRepository;
 use Src\Repository\ShopVendorRepository;
-use Src\Repository\UserRepository;
 use Src\Helpers\MessageAuth;
 use App\Models\API\BlockchainRequest;
 use Src\Middlewares\AuthenticatorNFT;
 
-class UserVendor extends NFTRepository
+class UserVendor extends QueryInserter
 {
 
     protected function getMyNFTs(int $id): array
@@ -40,7 +41,7 @@ class UserVendor extends NFTRepository
 
         $priceConvert = str_replace(array('.', ','), '', $price);
         $crypto = (new BlockchainRequest)->exchangeRates($currency, (string) $priceConvert);
-        $insert = NFTRepository::schemaRegisterNFT( (int) $owner, (int) $shop, (string) $name, (string) $description, (string) $quantity, (string) $blockchain, (string) $image['name'], (string) $price, (int) $crypto, (string) $cryptoType );
+        $insert = QueryInserter::schemaSetNFT( (int) $owner, (int) $shop, (string) $name, (string) $description, (string) $quantity, (string) $blockchain, (string) $image['name'], (string) $price, (int) $crypto, (string) $cryptoType );
         
         if(!empty($insert)){
             MessageAuth::launchMessage('error', 'Invalid data!');
@@ -56,7 +57,7 @@ class UserVendor extends NFTRepository
     {
         $priceConvert = str_replace(array('.', ','), '', $price);
         $crypto = (new BlockchainRequest)->exchangeRates($currency, (string) $priceConvert);
-        $update = NFTRepository::schemaUpdateNFT( (int) $nft, (int) $owner, (int) $shop, (string) $name, (string) $description, (string) $quantity, (string) $blockchain, (string) $price, (int) $crypto, (string) $cryptoType );
+        $update = QuerySeter::schemaUpdateNFT( (int) $nft, (int) $owner, (int) $shop, (string) $name, (string) $description, (string) $quantity, (string) $blockchain, (string) $price, (int) $crypto, (string) $cryptoType );
         
         if(!empty($update)){
             MessageAuth::launchMessage('error', 'Invalid data!');
@@ -74,7 +75,7 @@ class UserVendor extends NFTRepository
 
         if($verifyName === false || $verifyBanner === false) return;
 
-        $insert = ShopVendorRepository::schemaRegisterShop( (int) $owner, (string) $name, (string) $banner['name'] );
+        $insert = QueryInserter::schemaSetShop( (int) $owner, (string) $name, (string) $banner['name'] );
         
         if(!empty($insert)){
             MessageAuth::launchMessage('error', 'Invalid data!');
@@ -86,7 +87,7 @@ class UserVendor extends NFTRepository
         MessageAuth::launchMessage('success', 'Shop successfully registered!');
     }
 
-    public function setType(int $user, string $type):void
+    public function setType(int $user, string $type): void
     {
 
         if(!$type){
@@ -94,7 +95,7 @@ class UserVendor extends NFTRepository
             return;
         }
 
-        $update = UserRepository::schemaUpdateType( (int) $user );
+        $update = QuerySeter::schemaUpdateType( (int) $user );
         $_SESSION['type'] = $type;
     }
 

@@ -1,8 +1,8 @@
 <div class="divisor"></div>
 
-<section class="items-flex just-space-between w95 center mr-top-default">
+<section class="items-flex just-space-between w95 center mr-top-default flex-wrap">
 
-<aside class="container-search mr-bottom-default w20">
+<aside class="container-search mr-bottom-default w20 w100-dv-small">
     <form method="GET" action="/market" class="wrap w100 items-flex flex-wrap">
         <div class="w100 mr-bottom-small">
             <input type="text" name="search" placeholder="Search..." class="w100 mr-bottom-small" />
@@ -30,7 +30,7 @@
     </form>
 </aside>
 
-<section class="container-shop w80">
+<section class="container-shop w80 w100-dv-small">
     <div class="wrap w95 center">
         <div class="list-nfts flex-wrap items-flex">
            <?php

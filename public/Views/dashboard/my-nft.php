@@ -3,12 +3,12 @@
 <section class="container-form container-my-nft">
     <div class="wrap w95 center">
         <form method="POST" action="/dashboard/my-nft/?id=<?= $params['nft']['id'] ?>" enctype="multipart/form-data" class="form-box items-flex flex-wrap just-space-between">
-            <div class="w50">    
+            <div class="w50 w100-dv-small mr-dv-bottom-small">    
                 <figure class="img-bigger-nft">
                     <img src="<?= BASE_STORAGE_NFTS . '/' . $params['nft']['image'] ?>" />
                 </figure>
             </div>
-            <div class="w45">
+            <div class="w45 w100-dv-small">
                 <input type="text" name="name" class="w100 mr-bottom-small" value="<?= $params['nft']['name'] ?>" placeholder="Name of your NFT" />
                 <input type="text" name="description" class="w100 mr-bottom-small" value="<?= $params['nft']['description'] ?>" placeholder="Description of your NFT" />
                 <select name="shop" value="<?= $params['nft']['shop'] ?>" class="w100 mr-bottom-small">

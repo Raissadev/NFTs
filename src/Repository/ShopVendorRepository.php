@@ -9,12 +9,6 @@ class ShopVendorRepository
 
     private string $table = 'shops_vendors';
 
-    public static function schemaRegisterShop(int $owner, string $name, string $banner): void
-    {
-        $insert = ConnectionFactory::connect()->prepare("INSERT INTO shops_vendors (owner, name, banner) VALUES (?,?,?)");
-        $insert->execute([ $owner, $name, $banner ]);
-    }
-
     public static function schemaGetShopVendor(int $owner): array
     {
         $fetch = ConnectionFactory::connect()->prepare("SELECT * FROM shops_vendors WHERE owner = $owner");

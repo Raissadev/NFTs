@@ -7,6 +7,7 @@ use App\Models\Market;
 use App\Models\Entitys\User;
 use App\Models\Entitys\UserVendor;
 use App\Models\API\Blockchain;
+use App\Models\API\BlockchainRequest;
 use App\Models\API\BlockchainMetrics;
 
 class VendorController extends UserVendor
@@ -15,7 +16,7 @@ class VendorController extends UserVendor
     public function dashboard(): void
     {
         $blockchainUser = User::getMyBlockchain($_SESSION['id']);
-    $blockchainWallet = (new Blockchain)->balanceWallet( /* $blockchainUser['blockchain'], $blockchainUser['blockchain_password'] */ "", "" );
+        $blockchainWallet = (new Blockchain)->balanceWallet( /* $blockchainUser['blockchain'], $blockchainUser['blockchain_password'] */ "", "" );
         $lastNFTs = (new Market)->fetchNft( "ORDER BY id DESC LIMIT 3" );
         $owners = (new Market)->getAllUsers( "LIMIT 3" );
         $nfts = (new UserVendor)->getMyNFTs($_SESSION['id']);
@@ -52,7 +53,7 @@ class VendorController extends UserVendor
         $owners = (new Market)->getAllUsers( "LIMIT 3" );
         $blockchain = User::getMyBlockchain($_SESSION['id']);
         $user = (new Market)->getOwner($_SESSION['id']);
-        MainView::dashboard('profile', [ 'lastNFTs' => $lastNFTs, 'owners' => $owners, 'user' => $user, 'blockchain' => $blockchain['blockchain'] ]);
+        MainView::dashboard('profile', [ 'lastNFTs' => $lastNFTs, 'owners' => $owners, 'user' => $user, 'blockchain' => $blockchain ]);
     }
 
     public function statistics(): void{
@@ -60,7 +61,8 @@ class VendorController extends UserVendor
         $owners = (new Market)->getAllUsers( "LIMIT 3" );
         $nfts = (new UserVendor)->getMyNFTs($_SESSION['id']);
         $shops = (new Market)->getAllShops( "WHERE owner = $_SESSION[id]" );
-        MainView::dashboard('statistics', [ 'lastNFTs' => $lastNFTs, 'owners' => $owners, 'nfts' => $nfts, 'shops' => $shops ]);
+        $symbols = (new BlockchainRequest)->symbols();
+        MainView::dashboard('statistics', [ 'lastNFTs' => $lastNFTs, 'owners' => $owners, 'nfts' => $nfts, 'shops' => $shops, 'symbols' => $symbols ]);
     }
 
     public function myNFTs(): void
@@ -96,6 +98,17 @@ class VendorController extends UserVendor
         }
     }
 
+    public function storeUpdateProfile(): void
+    {
+        if(isset($_POST['update-profile'])){
+            User::authUpdateProfile( (int) $_SESSION['id'], (string) $_POST['name'], (string) $_POST['email'], (array) $_FILES['image'] );
+            
+            if(isset($_POST['blockchain'])){
+                User::newBlockchain( (int) $_SESSION['id'], (string) $_POST['blockchain'], (string) $_POST['blockchain_password'] );
+            }
+        }
+    }
+
     public function shopVendor(): void
     {
         $isUser = User::isUser();
@@ -109,6 +122,13 @@ class VendorController extends UserVendor
     {
         $isUser = User::isUser();
         MainView::render('nft-vendor', [ 'isUser' => $isUser ]);
+    }
+
+    public function becomeVendor(): void
+    {
+        if(isset($_GET['type']) && isset($_SESSION['id']) ){
+            (new UserVendor)->setType($_SESSION['id'], "vendor");
+        }
     }
 
 }

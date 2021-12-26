@@ -28,17 +28,6 @@ class AuthenticationController extends Authentication
         MainView::simpleRender('sign-up', [  ]);
     }
 
-    public function storeUpdateProfile(): void
-    {
-        if(isset($_POST['update-profile'])){
-            (new Authentication)->authUpdateProfile( (int) $_SESSION['id'], (string) $_POST['name'], (string) $_POST['email'], (array) $_FILES['image'] );
-            
-            if(isset($_POST['blockchain'])){
-                User::newBlockchain( (int) $_SESSION['id'], (string) $_POST['blockchain'] );
-            }
-        }
-    }
-
     public function storeSignUp(): void 
     {
         if(isset($_POST['sign-up'])){
@@ -63,11 +52,7 @@ class AuthenticationController extends Authentication
         }
     }
 
-    public function becomeVendor(): void
-    {
-        if(isset($_GET['type']) && isset($_SESSION['id']) ){
-            (new UserVendor)->setType($_SESSION['id'], "vendor");
-        }
-    }
-
 }
+
+
+?>

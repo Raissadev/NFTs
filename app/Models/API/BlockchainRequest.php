@@ -19,6 +19,12 @@ class BlockchainRequest extends Blockchain
         return $this->request();
     }
 
+    public function symbols(){
+        $this->endpoint = "/symbols";
+
+        return $this->request();
+    }
+
     public function getNFTs(): object
     {
         $this->base = "https://api.coinranking.com";

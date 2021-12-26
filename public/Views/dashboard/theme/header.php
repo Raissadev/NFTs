@@ -11,20 +11,20 @@
 </head>
 <body>
 
-<aside class="panel">
-    <nav class="wrap w100 h100 items-flex direction-column just-space-between align-center">
+<aside class="panel hide-dv-small aside-nav">
+    <nav class="wrap w100 h100 items-flex direction-column just-space-between align-center h85vh">
         <div class="col logo w85 text-center">
             <a><i class="ri-coins-fill"></i></a>
         </div>
         <ul class="col menu w85">
-            <li><a href="/dashboard" class="box-effect"> <i class="ri-command-fill"></i> </a></li>
-            <li><a href="/dashboard/statistics" class="box-effect"> <i class="ri-bar-chart-fill"></i> </a></li>
-            <li><a href="/dashboard/profile" class="box-effect"> <i class="ri-wallet-3-fill"></i> </a></li>
+            <li><a href="<?= BASE_URL ?>/dashboard" class="box-effect"> <i class="ri-command-fill"></i> </a></li>
+            <li><a href="<?= BASE_URL ?>/dashboard/statistics" class="box-effect"> <i class="ri-bar-chart-fill"></i> </a></li>
+            <li><a href="<?= BASE_URL ?>/dashboard/profile" class="box-effect"> <i class="ri-wallet-3-fill"></i> </a></li>
         </ul>
         <ul class="col menu w85">
-            <li><a href="/dashboard/my-nfts" class="box-effect"> <i class="ri-archive-fill"></i> </a></li>
-            <li><a href="/dashboard/register-nft" class="box-effect"> <i class="ri-quill-pen-fill"></i> </a></li>
-            <li><a href="/dashboard/register-shop" class="box-effect"> <i class="ri-git-branch-fill"></i> </a></li>
+            <li><a href="<?= BASE_URL ?>/dashboard/my-nfts" class="box-effect"> <i class="ri-archive-fill"></i> </a></li>
+            <li><a href="<?= BASE_URL ?>/dashboard/register-nft" class="box-effect"> <i class="ri-quill-pen-fill"></i> </a></li>
+            <li><a href="<?= BASE_URL ?>/dashboard/register-shop" class="box-effect"> <i class="ri-git-branch-fill"></i> </a></li>
         </ul>
         <ul class="col w85">
             <li class="text-center"><a> <i class="ri-shield-user-line"></i> </a></li>
@@ -41,13 +41,14 @@
             <input type="text" name="name" placeholder="Search here" class="w100" />
         </form>
         <div class="col w70 items-flex align-center just-end">
-            <a class="button w15 mr-right-default"><i class="ri-coin-fill mr-right-tiny"></i> <?= isset($params['blockchainWallet']->balance) ? $params['blockchainWallet']->balance : '0 BTC' ?></a>
+            <a class="button w15 mr-right-default hide-dv-small"><i class="ri-coin-fill mr-right-tiny"></i> <?= isset($params['blockchainWallet']->balance) ? $params['blockchainWallet']->balance : '0 BTC' ?></a>
             <div class="items-flex align-center">
                 <a><i class="ri-message-3-fill"></i></a>
                 <a class="mr-side-small"><i class="ri-notification-3-fill"></i></a>
+                <a class="toggle hide-dv-bigguer mr-right-small"><i class="ri-menu-3-line"></i></a>
                 <figure class="img-user-small items-flex align-center">
                     <img src="<?= BASE_STORAGE_USERS ?>/<?= $_SESSION['image'] ?>" />
-                    <h5 class="mr-left-tiny"><?= $_SESSION['name'] ?></h5>
+                    <h5 class="mr-left-tiny hide-dv-small"><?= $_SESSION['name'] ?></h5>
                 </figure>
             </div>
         </div>

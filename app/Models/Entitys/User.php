@@ -2,8 +2,10 @@
 
 namespace App\Models\Entitys;
 
+use App\Services\QuerysDatabase\QuerySeter;
 use Src\Repository\UserRepository;
 use Src\Helpers\MessageAuth;
+use Src\Middlewares\AuthenticatorMiddleware;
 
 class User extends UserRepository
 {
@@ -76,15 +78,15 @@ class User extends UserRepository
 
     public static function isUser(): array
     {        
-        if(!isset($_SESSION['id'])) return $buttons[] = [ "Text" => "Sign Up", "Link" => "/sign-up" ];
+        if(!isset($_SESSION['id'])) return $buttons[] = [ "Text" => "Sign Up", "Link" => "/sign-up", "TypeUser" => "Register", "TypeLink" => "/sign-up" ];
 
         $user = UserRepository::schemaGetTypeUser( (int) $_SESSION['id'] );
         $_SESSION['type'] = $user['type_user'];
 
         if($user['type_user'] === "vendor"){
-            $buttons[] = [ "Text" => "Dasboard", "Link" => "/dashboard" ];
+            $buttons[] = [ "Text" => "Dasboard", "Link" => "/dashboard", "TypeUser" => "Create NFT", "TypeLink" => "/dashboard/create-nft" ];
         }elseif($user['type_user'] === "client"){
-            $buttons[] = [ "Text" => "Profile", "Link" => "/profile" ];
+            $buttons[] = [ "Text" => "Profile", "Link" => "/profile", "TypeUser" => "Become Vendor", "TypeLink" => "/become-vendor?type=vendor" ];
         }
 
         return $buttons['0'];
@@ -92,7 +94,7 @@ class User extends UserRepository
 
     public static function newBlockchain(int $user, string $blockchain, string $blockchainPassword): void
     {
-        $insert = UserRepository::schemaCreateBlockchain( (int) $user, (string) $blockchain, (string) $blockchainPassword );
+        $insert = QuerySeter::schemaCreateBlockchain( (int) $user, (string) $blockchain, (string) $blockchainPassword );
 
         if(!empty($insert)){
             MessageAuth::launchMessage('error', 'Invalid data!');
@@ -109,6 +111,22 @@ class User extends UserRepository
     {
         $blockchain = UserRepository::schemaFetchBlockchain( (int) $user );
         return $blockchain;
+    }
+
+    public static function authUpdateProfile(int $user, string $name, string $email, array $image): void
+    {
+        $verifyName = AuthenticatorMiddleware::verifyName($name);
+        $verifyEmail = AuthenticatorMiddleware::verifyEmail($email);
+        $verifyImage = AuthenticatorMiddleware::verifyImage($image);
+
+        if($verifyEmail === false || $verifyEmail === false || $verifyImage === false) return;
+
+        $profile = QuerySeter::schemaUpdateUser( (int) $user, (string) $name, (string) $email, (string) $image['name'] );
+
+        move_uploaded_file($image['tmp_name'], dirname(__DIR__, 3). '\storage\users\\' . $image['name']);
+
+        new User( (int) $_SESSION['id'], (string) $name, (string) $email, (string) $_SESSION['password'], (string) $image['name'], (string) $_SESSION['type'] );
+        header('Refresh');
     }
 
 }

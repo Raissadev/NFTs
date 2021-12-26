@@ -44,7 +44,9 @@ figure.img-bigger-nft img{
 aside.panel{
     background-color: var(--black-weak);
     border-radius: 15px;
-    height: 90vh;
+    min-height: 90vh;
+    max-height: 90vh;
+    overflow-y: auto;
     width: 3.8%;
     padding: 1rem 0;
 }
@@ -70,7 +72,7 @@ aside.panel .menu li a {
 }
 aside.aside-infos{
     width: 20%;
-    height: 90vh;
+    min-height: 90vh;
     background-color: var(--black-weak);
     border-radius: 15px;
     padding: 1rem 0;
@@ -153,4 +155,49 @@ a.icon-default{
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 3px var(--purple);
+}
+section.container-table .wrap{
+    max-height: 70vh;
+    overflow-y: auto;
+}
+table tr td{
+    padding: 1rem;
+}
+
+
+@media screen and (max-width: 800px){
+
+    main.container-main {
+        width: 100%;
+    }
+    section.content {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    section.container-banner-dashboard figure.banner-dashboard {
+        padding: 3rem 1rem;
+    }
+    section.container-nfts .list-nfts .box {
+        min-width: 100%;
+        max-width: 100%;
+        margin: 3% 0;
+    }
+    aside.aside-infos{
+        width: 100%;
+    }
+    aside.panel {
+        position: fixed;
+        z-index: 999;
+        width: 15%;
+    }
+    aside.panel .col:not(aside.panel .col:last-child) {
+        margin: 0 0 1rem 0;
+    }
+    form.form-box {
+        padding: 1rem;
+    }
+    figure.img-bigger-nft img {
+        height: 50vh;
+    }
+    
 }

@@ -5,7 +5,6 @@ require 'config/config.php';
 $Router = new App\Route\Router;
 $Controllers = "App\Controllers";
 
-new Src\Middlewares\Permissions\PermissionsMiddleware;
 
 /* Methods Posts */
 $Router->post("/sign-in", "$Controllers\AuthenticationController", "storeSignIn");
@@ -17,7 +16,7 @@ $Router->post("/dashboard/register-nft", "$Controllers\VendorController", "store
 $Router->post("/dashboard/register-shop", "$Controllers\VendorController", "storeShopVendor");
 
 /* Methods Puts */
-$Router->put("/dashboard/profile", "$Controllers\AuthenticationController", "storeUpdateProfile");
+$Router->put("/dashboard/profile", "$Controllers\VendorController", "storeUpdateProfile");
 $Router->put("/dashboard/my-nft/?id=", "$Controllers\VendorController", "storeUpdateNFT");
 $Router->put("/create-wallet", "$Controllers\AuthenticationController", "storeCreateWallet");
 $Router->put("/profile", "$Controllers\ClientController", "storeUpdateProfile");
@@ -41,9 +40,11 @@ $Router->get("/market", "$Controllers\MarketController", "shop");
 $Router->get("/shop-vendor/?id=", "$Controllers\VendorController", "shopVendor");
 $Router->get("/nft/?id=", "$Controllers\MarketController", "nft");
 $Router->get("/global-nfts", "$Controllers\Controller", "globalNFTs");
-$Router->get("/become-vendor", "$Controllers\AuthenticationController", "becomeVendor");
+$Router->get("/become-vendor", "$Controllers\VendorController", "becomeVendor");
 $Router->get("/wallet", "$Controllers\Controller", "wallet");
 
 $Router->get("/", "$Controllers\Controller", "index");        
+
+new Src\Middlewares\Permissions\PermissionsMiddleware;
 
 ?>

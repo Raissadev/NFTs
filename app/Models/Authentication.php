@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use App\Models\Entitys\User;
-use Src\Repository\UserRepository;
+use App\Services\QuerysDatabase\QueryInserter;
 use Src\Helpers\MessageAuth;
 use Src\Middlewares\AuthenticatorMiddleware;
 
-class Authentication extends UserRepository
+class Authentication extends QueryInserter
 {
 
     protected function authSignIn(string $email, string $password): void
@@ -17,7 +17,7 @@ class Authentication extends UserRepository
 
         if($verifyEmail === false || $verifyPassword === false) return;
 
-        $user = UserRepository::schemaLoginUser( (string) $email, (string) $password );
+        $user = QueryInserter::schemaLoginUser( (string) $email, (string) $password );
 
         if(!$user){
             MessageAuth::launchMessage('error', 'Invalid data!');
@@ -39,7 +39,7 @@ class Authentication extends UserRepository
 
         if($verifyEmail === false || $verifyEmail === false || $verifyPassword === false || $verifyImage === false) return;
 
-        $launch = UserRepository::schemaRegisterUser( (string) $name, (string) $email, (string) $password, (string) $image['name'], (string) $type );
+        $launch = QueryInserter::schemaSetUser( (string) $name, (string) $email, (string) $password, (string) $image['name'], (string) $type );
         
         if(!$launch){
             MessageAuth::launchMessage('error', 'Error registering!');
@@ -50,22 +50,6 @@ class Authentication extends UserRepository
         new User( (int) $launch, (string) $name, (string) $email, (string) $password, (string) $image['name'], (string) $type );
 
         header('Location: '.BASE_URL.'/home');
-    }
-
-    protected static function authUpdateProfile(int $user, string $name, string $email, array $image): void
-    {
-        $verifyName = AuthenticatorMiddleware::verifyName($name);
-        $verifyEmail = AuthenticatorMiddleware::verifyEmail($email);
-        $verifyImage = AuthenticatorMiddleware::verifyImage($image);
-
-        if($verifyEmail === false || $verifyEmail === false || $verifyImage === false) return;
-
-        $profile = UserRepository::schemaUpdateUser( (int) $user, (string) $name, (string) $email, (string) $image['name'] );
-
-        move_uploaded_file($image['tmp_name'], dirname(__DIR__, 2). '\storage\users\\' . $image['name']);
-
-        new User( (int) $_SESSION['id'], (string) $name, (string) $email, (string) $_SESSION['password'], (string) $image['name'], (string) $_SESSION['type'] );
-
     }
 
 }
