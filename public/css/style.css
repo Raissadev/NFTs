@@ -1,0 +1,195 @@
+header{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    z-index: 999;
+}
+header .wrap, div.divisor {
+    height: 12vh;
+}
+header .wrap .logo h1{
+    font-size: 1.3rem;
+}
+nav.menu ul li a{
+    color: var(--gray-weak);
+    font-weight: 200;
+}
+header .wrap nav ul li{
+    margin-right: 0.6rem;
+}
+footer{
+    margin-top: 10vh;
+    background-color: var(--black-weak);
+    padding: 1rem;
+    border-top:1px solid var(--black-very-weak)
+}
+/* Home */
+main.welcome .wrap{
+    padding:0 5%;
+    background-image: url('../../storage/images/banner.jpg');
+    background-size: cover;
+    background-position: right -100px bottom 70%;
+    min-height: 120vh;
+}
+main.welcome .wrap::before, main.welcome .wrap::after {
+    content: '';
+    position: absolute;
+    bottom: 0vh;
+    left: 0;
+    width: 100%;
+    height: 20vh;
+    background: linear-gradient(to top, #18181a, #18181a, #18181a, #18181a, #18181a);
+    opacity: 0.9;
+    box-shadow: 0 -100px 30px 10px var(--black);
+    z-index: 0;
+}
+main.welcome .wrap::after {
+    bottom: 20vh;
+    height: 10vh;
+    background: unset;
+    box-shadow: 0 100px 30px 10px var(--black);
+}
+main.welcome .col h1{
+    font-weight: 600;
+    line-height: 1.3;
+}
+main.welcome .wrap .buttons, main.welcome .row{
+    z-index: 999;
+}
+main.welcome .row ul.col i{
+    color: var(--purple-weak);
+    font-size: 1.8rem;
+}
+main.welcome .row .box .col:not(main.welcome .row .buttons){
+    border-right: 1px solid var(--gray);
+}
+main.welcome .row {
+    margin-top: -10vh;
+}
+main.welcome .row .box .col h2{
+    font-size: 1.8rem;
+    color: var(--purple-weak);
+    margin: 0.5rem 0;
+}
+section.container-list ul li {
+    min-width: 23%;
+    max-width: 23%;
+    margin:0 1% 2% 1%;
+}
+section.container-nfts .list-nfts .box-nft, section.container-collections div.box-nft{
+    min-width: 30%;
+    max-width: 30%;
+    margin: 0 1%;
+}
+section.container-collections div.box-nft{
+    margin-bottom: 3%;
+}
+section.container-nfts .list-nfts .box-nft:not(section.container-nfts .list-nfts .box-nft:nth-of-type(2)){
+    transform: scale(0.95);
+}
+section.container-nfts .list-nfts .box-nft:nth-of-type(2), section.container-nfts .list-nfts .box-nft:hover{
+    box-shadow: 0 0 10px var(--black-weak);
+}
+section.container-nfts .list-nfts .box-nft:hover{
+    transform: scale(1) !important;
+}
+section.container-infos .row div.item {
+    padding:1rem;
+}
+section.container-invite .banner-action {
+    border-radius: 30px;
+    padding:2rem;
+    background-image: url('../../storage/images/crypto.jpg');
+    background-position: right -200px bottom 60%;
+    background-size: cover;
+}
+
+/* Shop */
+aside.container-search{
+    min-height: 40vh;
+    background-color: var(--black-weak);
+    border-radius: 10px;
+    border: 1px solid var(--purple);
+    padding:3rem 1rem;
+}
+aside.container-search form a{
+    position: relative;
+    min-width: 30%;
+    margin: 0 1.5% 3% 0;
+    background: var(--black);
+}
+aside.container-search form input, aside.container-search form select{
+   background-color: var(--black);
+}
+aside.container-search form input[type=checkbox]{
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+section.container-shop .box{
+    min-width: 30%;
+    max-width: 30%;
+    margin: 0 2% 2% 0;
+}
+section.container-shop .box-nft figure img:nth-of-type(1){
+    height: 40vh;
+}
+
+/* NFT Vendor */
+section.container-single-nft figure.img-very-bigger-nft img{
+    border: 1px solid var(--purple);
+}
+section.container-single-nft .col .text-infos h5{
+    line-height:1.5;
+}
+section.container-single-nft .col .item{
+    background: var(--black);
+    padding:0.8rem 1.5rem;
+}
+section.container-single-nft .col .item .col:nth-of-type(1){
+    border-right: 1px solid var(--purple);
+}
+section.container-single-nft .col .item .col:nth-of-type(2){
+    padding-left: 2rem;
+}
+section.container-form-nft input, section.container-form-nft select{
+    background-color: var(--black);
+}
+
+/* Shop Vendor */
+section.container-shop .row-infos{
+    margin-top: -18vh;
+}
+section.container-shop figure.img-user-very-bigger img{
+    border: 10px solid var(--black-strong);
+    box-shadow: 0 0 3px var(--black-strong);
+}
+section.container-shop-vendor-nfts .box{
+    min-width: 30%;
+    max-width: 30%;
+    margin-right: 2%;
+}
+
+/* Globals NFTs */
+section.container-global-nfts .box-nft{
+    min-width: 23%;
+    max-width: 23%;
+}
+
+/* Profile */
+section.container-form  form.form-profile{
+    background-color: var(--black-weak);
+    border-radius: 10px;
+    padding: 3rem 2rem;
+}
+section.container-form  form.form-blockchain{
+    padding: 1rem 2rem;
+}
+section.container-form  form.form-profile input, section.container-form  form.form-profile input[type="file"]::-webkit-file-upload-button, form.wallet input{
+    background-color: var(--black);
+}

@@ -1,0 +1,156 @@
+:root{
+    --black: #171529;
+    --black-default:#25203f;
+    --black-weak:#1f1d35;
+    --black-very-weak:#342e57;
+    --purple-weak:#bf50f3;
+    --blue-weak:#76b3ee;
+    --gray:#8f8e9a;
+    --purple-gradient: linear-gradient(to right bottom, #7431ea, #8a38ec, #9d3fee, #af47f1, #bf50f3);
+}
+body{
+    display: flex;
+    align-items: baseline;
+    padding: 1rem;
+    overflow-x: clip;
+}
+button, .button{
+    background: var(--black-very-weak);
+    border-radius: 15px;
+
+}
+/* Figures */
+
+figure.img-user-small img{
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+}
+figure.img-small img{
+    border-radius: 15px;
+    width: 50px;
+    height: 50px;
+}
+figure.img-bigger-nft img{
+    border-radius: 15px;
+    height: 70vh;
+}
+/* Components */
+.box{
+    border: 1px solid var(--purple);
+}
+
+/* Aside */
+aside.panel{
+    background-color: var(--black-weak);
+    border-radius: 15px;
+    height: 90vh;
+    width: 3.8%;
+    padding: 1rem 0;
+}
+aside.panel .col:not(aside.panel .col:last-child){
+    border-bottom: 2px solid var(--black-very-weak);
+    padding-bottom: 0.8rem;
+}
+aside.panel .menu li {
+    margin-bottom: 1rem;
+}
+aside.panel .menu li a {
+    background-color: var(--black-very-weak);
+    border-radius: 10px;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo i{
+    font-size: 2.2rem;
+    color: var(--purple);
+}
+aside.aside-infos{
+    width: 20%;
+    height: 90vh;
+    background-color: var(--black-weak);
+    border-radius: 15px;
+    padding: 1rem 0;
+}
+li.line-box{
+    background-color: var(--black-very-weak);
+    border-radius: 10px;
+    padding: 0.3rem;
+}
+aside.aside-infos ul li.line-box h5:nth-of-type(2){
+    margin: 0.2rem 0;
+}
+/* Header */
+form.search button{
+    position: absolute;
+    left:0.4%;
+}
+form.search input{
+    padding-left: 2.5rem;
+}
+header div.col i{
+    color: var(--purple);
+    font-size: 1.4rem;
+}
+/* Container */
+main.container-main{
+    min-height: 90vh;
+    width: 96.2%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+section.content{
+    width: 78%;
+}
+/* Home */
+section.container-banner-dashboard figure.banner-dashboard{
+    background-image: url('../../storage/images/crypto.jpg');
+    background-size: cover;
+    border-radius: 15px;
+    border:1px solid var(--purple);
+    padding: 3rem 2rem;
+}
+section.container-nfts .list-nfts .box{
+    min-width: 32%;
+    max-width: 32%;
+}
+
+/* Register-nft */
+form.form-box {
+    background-color: var(--black-default);
+    border-radius: 10px;
+    padding: 3rem 2rem;
+}
+
+/* My NFTs */
+section.container-my-nfts div.list-nfts .box{
+    margin-bottom: 1rem;
+}
+
+/* My NFT */
+section.container-my-nft figure.img-bigger-nft{
+    padding: 1rem;
+    border: 1px solid var(--purple);
+    border-radius: 15px;
+}
+
+/* Statistics */
+section .box-chart{
+    background-color: var(--black-default);
+    border-radius: 15px;
+    padding: 2rem 0.5rem 0rem 0.5rem;
+}
+a.icon-default{
+    border:1px solid var(--purple);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 3px var(--purple);
+}

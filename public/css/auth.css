@@ -1,0 +1,15 @@
+section.container-auth{
+    background-image: url('../../storage/images/banner.gif');
+    background-size: 100%;
+    background-position: center bottom;
+}
+section.container-auth form.box-auth{
+    background: rgba( 24, 24, 26, 0.4 );
+    box-shadow: 0 8px 32px 0 rgba(59, 59, 59, 0.37);
+    backdrop-filter: blur( 9.5px );
+    -webkit-backdrop-filter: blur( 9.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    min-height: 40vh;
+    padding: 1.5rem;
+}

@@ -1,0 +1,49 @@
+<?php
+
+require 'config/config.php';
+
+$Router = new App\Route\Router;
+$Controllers = "App\Controllers";
+
+new Src\Middlewares\Permissions\PermissionsMiddleware;
+
+/* Methods Posts */
+$Router->post("/sign-in", "$Controllers\AuthenticationController", "storeSignIn");
+$Router->post("/sign-up", "$Controllers\AuthenticationController", "storeSignUp");
+$Router->post("/request-wallet", "$Controllers\AuthenticationController", "storeRequestBlockchain");
+$Router->post("/nft", "$Controllers\PaymentController", "storePayment");
+//Dashboard
+$Router->post("/dashboard/register-nft", "$Controllers\VendorController", "storeRegisterNFT");
+$Router->post("/dashboard/register-shop", "$Controllers\VendorController", "storeShopVendor");
+
+/* Methods Puts */
+$Router->put("/dashboard/profile", "$Controllers\AuthenticationController", "storeUpdateProfile");
+$Router->put("/dashboard/my-nft/?id=", "$Controllers\VendorController", "storeUpdateNFT");
+$Router->put("/create-wallet", "$Controllers\AuthenticationController", "storeCreateWallet");
+$Router->put("/profile", "$Controllers\ClientController", "storeUpdateProfile");
+$Router->put("/update-blockchain", "$Controllers\ClientController", "storeUpdateBlockchain");
+
+/* Methods Gets */
+//Dashboard
+$Router->get("/dashboard/profile", "$Controllers\VendorController", "profile");
+$Router->get("/dashboard/statistics", "$Controllers\VendorController", "statistics");
+$Router->get("/dashboard/register-nft", "$Controllers\VendorController", "registerNFT");
+$Router->get("/dashboard/my-nfts", "$Controllers\VendorController", "myNFTs");
+$Router->get("/dashboard/my-nft/?id=", "$Controllers\VendorController", "myNFT");
+$Router->get("/dashboard/register-shop", "$Controllers\VendorController", "registerShopVendor");
+$Router->get("/dashboard", "$Controllers\VendorController", "dashboard");
+//Pages Defaults
+$Router->get("/home", "$Controllers\Controller", "index");
+$Router->get("/sign-in", "$Controllers\AuthenticationController", "signIn");
+$Router->get("/sign-up", "$Controllers\AuthenticationController", "signUp");
+$Router->get("/profile", "$Controllers\ClientController", "profile");
+$Router->get("/market", "$Controllers\MarketController", "shop");
+$Router->get("/shop-vendor/?id=", "$Controllers\VendorController", "shopVendor");
+$Router->get("/nft/?id=", "$Controllers\MarketController", "nft");
+$Router->get("/global-nfts", "$Controllers\Controller", "globalNFTs");
+$Router->get("/become-vendor", "$Controllers\AuthenticationController", "becomeVendor");
+$Router->get("/wallet", "$Controllers\Controller", "wallet");
+
+$Router->get("/", "$Controllers\Controller", "index");        
+
+?>

@@ -1,0 +1,5 @@
+node_modules
+coverage
+coverage-lcov
+Changelog.md
+.DS_Store

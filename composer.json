@@ -1,0 +1,23 @@
+{
+    "name": "user/nfts",
+    "autoload": {
+        "psr-4": {
+            "User\\Nfts\\": "src/",
+            "Src\\Exceptions\\": "src/Exceptions/",
+            "Src\\Helpers\\": "src/Helpers/",
+            "Src\\Middlewares\\": "src/Middlewares/",
+            "Src\\Repository\\": "src/Repository/",
+            "App\\Route\\": "app/Route/",
+            "App\\Controllers\\": "app/Controllers/",
+            "App\\Models\\": "app/Models/",
+            "App\\Services\\": "app/Services/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Raissadev",
+            "email": "raissa.fullstack@gmail.com"
+        }
+    ],
+    "require": {}
+}
