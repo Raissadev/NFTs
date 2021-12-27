@@ -27,7 +27,7 @@
         <div class="box w30 items-flex align-center just-space-between w100-dv-small">
             <div class="w50">
                 <p class="mr-bottom-tiny">Users</p>
-                <h1><?= count($params['nfts']); ?></h1>
+                <h1><?= count($params['users']); ?></h1>
             </div>
             <a class="icon-default text-right">
                 <i class="ri-quill-pen-fill"></i> 

@@ -18,7 +18,7 @@ class VendorController extends UserVendor
         $blockchainUser = User::getMyBlockchain($_SESSION['id']);
         $blockchainWallet = (new Blockchain)->balanceWallet( /* $blockchainUser['blockchain'], $blockchainUser['blockchain_password'] */ "", "" );
         $lastNFTs = (new Market)->fetchNft( "ORDER BY id DESC LIMIT 3" );
-        $owners = (new Market)->getAllUsers( "LIMIT 3" );
+        $owners = (new Market)->getAllUsers( "LIMIT 4" );
         $nfts = (new UserVendor)->getMyNFTs($_SESSION['id']);
         MainView::dashboard('dashboard', [ 'nfts' => $nfts, 'lastNFTs' => $lastNFTs, 'owners' => $owners, 'blockchainWallet' => $blockchainWallet ]);
     }
@@ -27,7 +27,7 @@ class VendorController extends UserVendor
     {
         $lastNFTs = (new Market)->fetchNft( "ORDER BY id DESC LIMIT 3" );
         $nfts = (new UserVendor)->getMyNFTs($_SESSION['id']);
-        $owners = (new Market)->getAllUsers( "LIMIT 3" );
+        $owners = (new Market)->getAllUsers( "LIMIT 4" );
         $blockchain = User::getMyBlockchain($_SESSION['id']);
         $shops = (new UserVendor)->getShops($_SESSION['id']);
         MainView::dashboard('register-nft', [ 'lastNFTs' => $lastNFTs, 'owners' => $owners, 'shops' => $shops, 'blockchain' => $blockchain['blockchain'] ]);
@@ -36,7 +36,7 @@ class VendorController extends UserVendor
     public function registerShopVendor(): void
     {
         $lastNFTs = (new Market)->fetchNft( "ORDER BY id DESC LIMIT 3" );
-        $owners = (new Market)->getAllUsers( "LIMIT 3" );
+        $owners = (new Market)->getAllUsers( "LIMIT 4" );
         MainView::dashboard('register-shop', [ 'lastNFTs' => $lastNFTs, 'owners' => $owners ]);
     }
 
@@ -50,7 +50,7 @@ class VendorController extends UserVendor
     public function profile(): void
     {
         $lastNFTs = (new Market)->fetchNft( "ORDER BY id DESC LIMIT 3" );
-        $owners = (new Market)->getAllUsers( "LIMIT 3" );
+        $owners = (new Market)->getAllUsers( "LIMIT 4" );
         $blockchain = User::getMyBlockchain($_SESSION['id']);
         $user = (new Market)->getOwner($_SESSION['id']);
         MainView::dashboard('profile', [ 'lastNFTs' => $lastNFTs, 'owners' => $owners, 'user' => $user, 'blockchain' => $blockchain ]);
@@ -58,17 +58,18 @@ class VendorController extends UserVendor
 
     public function statistics(): void{
         $lastNFTs = (new Market)->fetchNft( "ORDER BY id DESC LIMIT 3" );
-        $owners = (new Market)->getAllUsers( "LIMIT 3" );
+        $owners = (new Market)->getAllUsers( "LIMIT 4" );
+        $users = (new Market)->getAllUsers( "" );
         $nfts = (new UserVendor)->getMyNFTs($_SESSION['id']);
         $shops = (new Market)->getAllShops( "WHERE owner = $_SESSION[id]" );
         $symbols = (new BlockchainRequest)->symbols();
-        MainView::dashboard('statistics', [ 'lastNFTs' => $lastNFTs, 'owners' => $owners, 'nfts' => $nfts, 'shops' => $shops, 'symbols' => $symbols ]);
+        MainView::dashboard('statistics', [ 'lastNFTs' => $lastNFTs, 'owners' => $owners, 'nfts' => $nfts, 'shops' => $shops, 'users' => $users, 'symbols' => $symbols ]);
     }
 
     public function myNFTs(): void
     {
         $lastNFTs = (new Market)->fetchNft( "ORDER BY id DESC LIMIT 3" );
-        $owners = (new Market)->getAllUsers( "LIMIT 3" );
+        $owners = (new Market)->getAllUsers( "LIMIT 4" );
         $nfts = (new Market)->fetchNft( isset($_GET['search-my-nft']) ? "WHERE name LIKE '$_GET[name]%' AND owner = $_SESSION[id]" : "WHERE owner = $_SESSION[id]" );
         $users = (new Market)->getAllUsers("");
         MainView::dashboard('my-nfts', [ 'lastNFTs' => $lastNFTs, 'owners' => $owners, 'nfts' => $nfts, 'users' => $users ]);
@@ -77,7 +78,7 @@ class VendorController extends UserVendor
     public function myNFT(): void
     {
         $lastNFTs = (new Market)->fetchNft( "ORDER BY id DESC LIMIT 3" );
-        $owners = (new Market)->getAllUsers( "LIMIT 3" );
+        $owners = (new Market)->getAllUsers( "LIMIT 4" );
         $nft = (new UserVendor)->getMyNFT($_GET['id'], $_SESSION['id']);
         $shops = (new UserVendor)->getShops($_SESSION['id']);
         MainView::dashboard('my-nft', [ 'lastNFTs' => $lastNFTs, 'owners' => $owners, 'nft' => $nft, 'shops' => $shops ]);
@@ -107,21 +108,6 @@ class VendorController extends UserVendor
                 User::newBlockchain( (int) $_SESSION['id'], (string) $_POST['blockchain'], (string) $_POST['blockchain_password'] );
             }
         }
-    }
-
-    public function shopVendor(): void
-    {
-        $isUser = User::isUser();
-        $nfts = (new Market)->fetchNft( "WHERE owner = $_GET[id]" );
-        $owner = (new Market)->getOwner( $_GET['id'] );
-        $shop = (new Market)->getShop( $_GET['id'] );
-        MainView::render('shop-vendor', [ 'isUser' => $isUser, 'nfts' => $nfts, 'owner' => $owner, 'shop' => $shop]);
-    }
-
-    public function nftVendor(): void
-    {
-        $isUser = User::isUser();
-        MainView::render('nft-vendor', [ 'isUser' => $isUser ]);
     }
 
     public function becomeVendor(): void

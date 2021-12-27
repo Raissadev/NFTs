@@ -1,5 +1,5 @@
 <div class="box box-nft global-nft">
-    <a target="_blank" href="<?= $nft->externalUrl ?>">
+    <a target="_blank" href="<?= BASE_URL ?>/global-nft/?id=<?= $nft->id ?>">
         <figure class="img-default-nft mr-bottom-tiny">
             <img src="<?= $nft->image ?>" />
         </figure>
@@ -15,3 +15,5 @@
         </div>
     </a>
 </div>
+
+<!--<?= $nft->externalUrl ?>-->

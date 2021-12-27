@@ -14,7 +14,7 @@
 <aside class="panel hide-dv-small aside-nav">
     <nav class="wrap w100 h100 items-flex direction-column just-space-between align-center h85vh">
         <div class="col logo w85 text-center">
-            <a><i class="ri-coins-fill"></i></a>
+            <a href="<?= BASE_URL ?>/dashboard"><img src="<?= BASE_STORAGE_IMAGES ?>/digital_key.svg" /></a>
         </div>
         <ul class="col menu w85">
             <li><a href="<?= BASE_URL ?>/dashboard" class="box-effect"> <i class="ri-command-fill"></i> </a></li>
@@ -45,7 +45,7 @@
             <div class="items-flex align-center">
                 <a><i class="ri-message-3-fill"></i></a>
                 <a class="mr-side-small"><i class="ri-notification-3-fill"></i></a>
-                <a class="toggle hide-dv-bigguer mr-right-small"><i class="ri-menu-3-line"></i></a>
+                <a class="toggle hide-dv-bigger mr-right-small"><i class="ri-menu-3-line"></i></a>
                 <figure class="img-user-small items-flex align-center">
                     <img src="<?= BASE_STORAGE_USERS ?>/<?= $_SESSION['image'] ?>" />
                     <h5 class="mr-left-tiny hide-dv-small"><?= $_SESSION['name'] ?></h5>

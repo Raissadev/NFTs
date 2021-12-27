@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Services\MainView;
 use App\Models\Entitys\User;
 use App\Models\Market;
+use App\Models\Api\BlockchainRequest;
 
 class MarketController extends Market
 {
@@ -19,6 +20,15 @@ class MarketController extends Market
         MainView::render('market', [ "isUser" => $isUser, 'nfts' => $nfts, 'owners' => $owners, 'filter' => $filter, 'shops' => $shops ]);
     }
 
+    public function shopVendor(): void
+    {
+        $isUser = User::isUser();
+        $nfts = (new Market)->fetchNft( "WHERE owner = $_GET[id]" );
+        $owner = (new Market)->getOwner( $_GET['id'] );
+        $shop = (new Market)->getShop( $_GET['id'] );
+        MainView::render('shop-vendor', [ 'isUser' => $isUser, 'nfts' => $nfts, 'owner' => $owner, 'shop' => $shop]);
+    }
+
     public function nft(): void
     {
         $blockchain = User::getMyBlockchain($_SESSION['id']);
@@ -26,6 +36,14 @@ class MarketController extends Market
         $nft = (new Market)->getNFT($_GET['id']);
         $owner = (new Market)->getOwner($nft['owner']);
         MainView::render('nft-vendor', [ "isUser" => $isUser, 'nft' => $nft, 'owner' => $owner, 'blockchain' => $blockchain ]);
+    }
+
+    public function globalNFT(): void
+    {
+        $blockchain = User::getMyBlockchain($_SESSION['id']);
+        $isUser = User::isUser();
+        $nft = (new BlockchainRequest)->nftSingle($_GET['id']);
+        MainView::render('global-nft', [ "isUser" => $isUser, 'nft' => $nft, 'blockchain' => $blockchain ]);
     }
 
 }

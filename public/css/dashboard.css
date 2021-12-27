@@ -10,7 +10,7 @@
 }
 body{
     display: flex;
-    align-items: baseline;
+    align-items: flex-start;
     padding: 1rem;
     overflow-x: clip;
 }

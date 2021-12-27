@@ -19,7 +19,8 @@ class BlockchainRequest extends Blockchain
         return $this->request();
     }
 
-    public function symbols(){
+    public function symbols()
+    {
         $this->endpoint = "/symbols";
 
         return $this->request();
@@ -45,6 +46,14 @@ class BlockchainRequest extends Blockchain
     {
         $this->base = "https://blockchain.info";
         $this->endpoint = "/tobtc?currency=$currency&value=$value";
+
+        return $this->request();
+    }
+
+    public function nftSingle(string $id)
+    {
+        $this->base = "https://api.coinranking.com";
+        $this->endpoint = "/v2/nft/$id";
 
         return $this->request();
     }
