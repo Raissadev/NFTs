@@ -4,11 +4,13 @@ namespace Src\Middlewares\Permissions;
 
 final class PermissionsClient
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->uri();
     }
     
-    public function uri(): array{
+    public function uri(): array
+    {
         $uri = [
             "dashboard",
             "profile",

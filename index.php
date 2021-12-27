@@ -2,9 +2,10 @@
 
 require 'config/config.php';
 
+new Src\Middlewares\Permissions\PermissionsMiddleware;
+
 $Router = new App\Route\Router;
 $Controllers = "App\Controllers";
-
 
 /* Methods Posts */
 $Router->post("/sign-in", "$Controllers\AuthenticationController", "storeSignIn");
@@ -43,9 +44,6 @@ $Router->get("/global-nft/?id=", "$Controllers\MarketController", "globalNFT");
 $Router->get("/global-nfts", "$Controllers\Controller", "globalNFTs");
 $Router->get("/become-vendor", "$Controllers\VendorController", "becomeVendor");
 $Router->get("/wallet", "$Controllers\Controller", "wallet");
-
 $Router->get("/", "$Controllers\Controller", "index");        
-
-new Src\Middlewares\Permissions\PermissionsMiddleware;
 
 ?>
