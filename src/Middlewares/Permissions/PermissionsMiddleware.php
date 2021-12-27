@@ -16,7 +16,7 @@ class PermissionsMiddleware
     public function __construct()
     {
 
-        $user = UserRepository::schemaGetTypeUser( (int) $_SESSION['id'] );
+        if(isset($_SESSION['id'])) $user = UserRepository::schemaGetTypeUser( (int) $_SESSION['id'] );
 
         if(!isset($_SESSION['login']) && !strpos($_SERVER['REQUEST_URI'], "sign-in") && !isset($_SESSION['login']) && !strpos($_SERVER['REQUEST_URI'], "sign-up")){
             header('Location: '.BASE_URL.'/sign-in');
@@ -29,7 +29,7 @@ class PermissionsMiddleware
         if(isset($_SESSION['type'])){
             $this->function = $_SESSION['type'];
             $this->type();
-        } elseif ($user['type_user'] !== "vendor" && strpos($_SERVER['REQUEST_URI'], "dashboard")){
+        } elseif (isset($user['type_user']) ? $user['type_user'] !== "vendor" && strpos($_SERVER['REQUEST_URI'], "dashboard") : ''){
             header("location: ".BASE_URL);
         }
     }

@@ -33,4 +33,9 @@ class Controller
         MainView::render('wallet', [ "isUser" => $isUser ]);
     }
 
+    public function exception(): void 
+    {
+        MainView::simpleRender('exception', [  ]);
+    }
+
 }

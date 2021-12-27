@@ -11,7 +11,12 @@ class PaymentController extends Blockchain
     public function storePayment(): void
     {
         if(isset($_POST['buy'])){
-            (new Blockchain)->makePayment( $_POST['guid'], $_POST['password'], $_POST['to'], $_POST['amount'] );
+            $newBuy = (new Blockchain)->makePayment( $_POST['guid'], $_POST['password'], $_POST['to'], $_POST['amount'] );
+            
+            if($newBuy && isset($_POST['nft-identifier'])){
+                (new VendorController)->newBuy( (int) $_POST['nft-identifier'], (int) $_POST['quantity'] - 1 );
+            }
+
         }
     }
 

@@ -99,6 +99,11 @@ class UserVendor extends QueryInserter
         $_SESSION['type'] = $type;
     }
 
+    public function newBuy(int $nft, int $quantity): void
+    {
+        $update = QuerySeter::schemaUpdateQuantityNFT( (int) $nft, (int) $quantity );
+    }
+
 }
 
 ?>

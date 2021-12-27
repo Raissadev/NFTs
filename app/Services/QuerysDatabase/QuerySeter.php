@@ -31,6 +31,12 @@ class QuerySeter
         $insert = ConnectionFactory::connect()->prepare("UPDATE users SET blockchain = ?, blockchain_password = ? WHERE id = $user");
         $insert->execute([ $blockchain, $blockchainPassword ]);
     }
+
+    public static function schemaUpdateQuantityNFT(int $nft, int $quantity): void
+    {
+        $update = ConnectionFactory::connect()->prepare("UPDATE nfts SET quantity = ? WHERE id = $nft");
+        $update->execute([ $quantity ]);
+    }
     
 }
 

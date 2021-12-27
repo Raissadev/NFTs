@@ -46,6 +46,8 @@
             <input type="password" name="password" placeholder="Password your blockchain" value="<?= $params['blockchain']['blockchain_password'] ?>" class="w100 mr-bottom-small" />   
             <input type="hidden" name="to" value="<?= $params['owner']['blockchain'] ?>" />   
             <input type="hidden" name="amount" value="<?= $params['nft']['price_crypto'] ?>" />   
+            <input type="hidden" name="nft-identifier" value="<?= $params['nft']['id'] ?>" />   
+            <input type="hidden" name="quantity" value="<?= $params['nft']['quantity'] ?>" />   
             <button type="submit" name="buy" class="w30 center w40-dv-small">Buy now</button>   
         </form>
     </section>

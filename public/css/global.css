@@ -508,10 +508,10 @@ div.alert{
     z-index: 9999;
 }
 div.alert.error{
-    background-color: var(--rad);
+    background-color: var(--rad) !important;
 }
 div.alert.success{
-    background-color: var(--purple);
+    background-color: var(--purple) !important;
 }
 div.alert p{
     color: var(--white) !important;

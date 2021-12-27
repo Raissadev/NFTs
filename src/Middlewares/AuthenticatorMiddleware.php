@@ -1,7 +1,9 @@
 <?php
 
 namespace Src\Middlewares;
+
 use Src\Helpers\MessageAuth;
+use Src\Exceptions\AuthException;
 
 class AuthenticatorMiddleware
 {
@@ -23,7 +25,7 @@ class AuthenticatorMiddleware
     {
         $characters = preg_match("/[\[^\'£$%^&*()}{@:\'#~?><>]]/", (string) $name);
         if($characters || $name == ""){
-            MessageAuth::launchMessage("error", "Invalid name!");
+            throw new AuthException("Malicious techniques were detected! Go hack another asshole!");
             return false;
         }
         
