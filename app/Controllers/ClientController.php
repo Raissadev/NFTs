@@ -38,8 +38,12 @@ class ClientController
     public function myNTFs(): void
     {
         $nftsClient = (new NFT)->getListNFT( (int) $_SESSION['id'] );
-        $nftsClient = (new NFT)->getListNFT( (int) $_SESSION['id'] );
         MainView::render('my-nfts', [ 'isUser' => $this->funcsUser, 'nftsClient' => $nftsClient ]);
+    }
+
+    public function downloadFile(): void
+    {
+        $readFile = (new NFT)->downloadFile( (string) $_POST['image-nft']  );
     }
 
 }

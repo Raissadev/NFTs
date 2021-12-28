@@ -12,6 +12,7 @@ $Router->post("/sign-in", "$Controllers\AuthenticationController", "storeSignIn"
 $Router->post("/sign-up", "$Controllers\AuthenticationController", "storeSignUp");
 $Router->post("/request-wallet", "$Controllers\AuthenticationController", "storeRequestBlockchain");
 $Router->post("/nft", "$Controllers\PaymentController", "storePayment");
+$Router->post("/download-file", "$Controllers\ClientController", "downloadFile");
 //Dashboard
 $Router->post("/dashboard/register-nft", "$Controllers\VendorController", "storeRegisterNFT");
 $Router->post("/dashboard/register-shop", "$Controllers\VendorController", "storeShopVendor");
