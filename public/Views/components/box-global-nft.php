@@ -1,5 +1,5 @@
 <div class="box box-nft global-nft">
-    <a target="_blank" href="<?= BASE_URL ?>/global-nft/?id=<?= $nft->id ?>">
+    <a href="<?= BASE_URL ?>/global-nft/?id=<?= $nft->id ?>">
         <figure class="img-default-nft mr-bottom-tiny">
             <img src="<?= $nft->image ?>" />
         </figure>

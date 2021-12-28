@@ -21,7 +21,7 @@
                     <figure class="img-user-small mr-right-tiny">
                         <img src="<?= $params['nft']->data->nft->dappImage ?>" />
                     </figure>
-                    <h5><a href="<?= $params['nft']->data->nft->externalUrl ?>">External Url</a></h5>
+                    <h5><a target="_blank" href="<?= $params['nft']->data->nft->externalUrl ?>">External Url</a></h5>
                 </div>
                 <div class="item items-flex align-center just-space-betweeen mr-bottom-default">
                     <div class="col w50">

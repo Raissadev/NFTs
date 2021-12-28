@@ -42,7 +42,7 @@
         <form method="POST" action="/nft/?id=<?= $params['nft']['id'] ?>" class="wrap box w95 center">
             <input type="text" name="name" placeholder="Your name" value="<?= $_SESSION['name'] ?>" class="w100 mr-bottom-small" />   
             <input type="text" name="email" placeholder="Your email" value="<?= $_SESSION['email'] ?>" class="w100 mr-bottom-small" /> 
-            <input type="text" name="guid" placeholder="Address your blockchain" value="<?= $params['blockchain']['blockchain'] ?>" class="w100 mr-bottom-small" />
+            <input type="password" name="guid" placeholder="Address your blockchain" value="<?= $params['blockchain']['blockchain'] ?>" class="w100 mr-bottom-small" />
             <input type="password" name="password" placeholder="Password your blockchain" value="<?= $params['blockchain']['blockchain_password'] ?>" class="w100 mr-bottom-small" />   
             <input type="hidden" name="to" value="<?= $params['owner']['blockchain'] ?>" />   
             <input type="hidden" name="amount" value="<?= $params['nft']['price_crypto'] ?>" />   

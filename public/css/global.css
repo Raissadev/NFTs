@@ -23,12 +23,12 @@
 }
 ::-webkit-scrollbar {
 	background: transparent;
-	width: 5px;
+	width: 6px;
 	border:1px solid transparent;
 }
 ::-webkit-scrollbar-thumb {
 	border-radius: .4rem;
-	background: var(--black-weak);
+	background: var(--black-very-weak);
 }
 body, html{
     min-height: 100vh;

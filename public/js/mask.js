@@ -5,11 +5,11 @@ String.prototype.reverse = function()
 
 function coinMask(field, event)
 {
-    var key = (!event) ? window.event.keyCode : event.which;
-    var value = field.value.replace(/[^\d]+/gi, '').reverse();
-    var result = "";
-    var mask = "##.###.###,##".reverse();
-    for(var x = 0, y = 0; x < mask.length && y < value.length;){
+    let key = (!event) ? window.event.keyCode : event.which;
+    let value = field.value.replace(/[^\d]+/gi, '').reverse();
+    let result = "";
+    let mask = "##.###.###,##".reverse();
+    for(let x = 0, y = 0; x < mask.length && y < value.length;){
         if(mask.charAt(x) != "#"){
             result += mask.charAt(x);
             x++;
@@ -22,4 +22,3 @@ function coinMask(field, event)
 
     field.value = result.reverse();
 }
-
