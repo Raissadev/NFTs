@@ -22,7 +22,7 @@ class NFT
         return $response;
     }
 
-    public function downloadFile($image): void
+    public function downloadFile(string $image): void
     {
 
         set_time_limit(0);

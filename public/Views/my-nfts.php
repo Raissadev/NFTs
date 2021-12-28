@@ -1,6 +1,6 @@
 <div class="divisor"></div>
 
-<section class="container-collections mr-top-bigger">
+<section class="container-collections mr-top-bigger h75vh">
     <div class="wrap w90 center">
         <div class="title mr-bottom-default">
             <h2 class="font-size-default">Your NFTs</h2>
