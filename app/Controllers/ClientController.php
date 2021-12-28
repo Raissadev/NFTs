@@ -10,12 +10,18 @@ use App\Models\Authentication;
 class ClientController
 {
 
+    private array $funcsUser;
+
+    public function __construct()
+    {
+        $this->funcsUser = User::isUser();
+    }
+
     public function profile(): void
     {
-        $isUser = User::isUser();
         $user = (new Market)->getOwner($_SESSION['id']);
         $blockchain = User::getMyBlockchain($_SESSION['id']);
-        MainView::render('profile', [ 'isUser' => $isUser, 'user' => $user, 'blockchain' => $blockchain ]);
+        MainView::render('profile', [ 'isUser' => $this->funcsUser, 'user' => $user, 'blockchain' => $blockchain ]);
     }
 
     public function storeUpdateProfile(): void

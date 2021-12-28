@@ -62,7 +62,7 @@ class Blockchain
         $response = json_decode(curl_exec($ch));
         curl_close($ch);
         
-        if(!$response){
+        if(empty($response)){
             MessageAuth::launchMessage('error', 'Error sended!');
             return;
         }

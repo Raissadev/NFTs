@@ -26,8 +26,8 @@ class PermissionsMiddleware
             header('Location: '.BASE_URL);
         }
 
-        if(isset($_SESSION['type'])){
-            $this->function = $_SESSION['type'];
+        if(isset($_SESSION['type_user'])){
+            $this->function = $_SESSION['type_user'];
             $this->type();
         } elseif (isset($user['type_user']) ? $user['type_user'] !== "vendor" && strpos($_SERVER['REQUEST_URI'], "dashboard") : ''){
             header("location: ".BASE_URL);

@@ -6,6 +6,12 @@ class Router
 {
 
     private string $httpMethod;
+    private array $request;
+
+    public function __construct()
+    {
+        $this->request = $_POST;
+    }
 
     public function get(string $path, string $class, string $params): void
     {
@@ -19,7 +25,7 @@ class Router
 
     public function post(string $path, string $class, string $params): void
     {
-        if(!$_POST) return;
+        if(!$this->request) return;
         
         $this->httpMethod = $_SERVER['REQUEST_METHOD'] = "POST";
         
@@ -32,7 +38,7 @@ class Router
 
     public function put(string $path, string $class, string $params): void
     {
-        if(!$_POST) return;
+        if(!$this->request) return;
 
         $this->httpMethod = $_SERVER['REQUEST_METHOD'] = "PUT";
 
@@ -44,7 +50,7 @@ class Router
 
     public function delete(string $path, string $class, string $params): void
     {
-        if(!$_POST) return;
+        if(!$this->request) return;
 
         $this->httpMethod = $_SERVER['REQUEST_METHOD'] = "DELETE";
 

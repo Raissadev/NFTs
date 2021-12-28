@@ -72,7 +72,7 @@ class User extends UserRepository
 
     public function getType(): string
     {
-        $_SESSION['type'] = $this->type;
+        $_SESSION['type_user'] = $this->type;
         return $this->type;
     }
 
@@ -81,7 +81,7 @@ class User extends UserRepository
         if(!isset($_SESSION['id'])) return $buttons[] = [ "Text" => "Sign Up", "Link" => "/sign-up", "TypeUser" => "Register", "TypeLink" => "/sign-up" ];
 
         $user = UserRepository::schemaGetTypeUser( (int) $_SESSION['id'] );
-        $_SESSION['type'] = $user['type_user'];
+        $_SESSION['type_user'] = $user['type_user'];
 
         if($user['type_user'] === "vendor"){
             $buttons[] = [ "Text" => "Dasboard", "Link" => "/dashboard", "TypeUser" => "Create NFT", "TypeLink" => "/dashboard/create-nft" ];
@@ -125,7 +125,7 @@ class User extends UserRepository
 
         move_uploaded_file($image['tmp_name'], dirname(__DIR__, 3). '\storage\users\\' . $image['name']);
 
-        new User( (int) $_SESSION['id'], (string) $name, (string) $email, (string) $_SESSION['password'], (string) $image['name'], (string) $_SESSION['type'] );
+        new User( (int) $_SESSION['id'], (string) $name, (string) $email, (string) $_SESSION['password'], (string) $image['name'], (string) $_SESSION['type_user'] );
         header('Refresh');
     }
 

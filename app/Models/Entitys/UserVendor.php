@@ -96,7 +96,7 @@ class UserVendor extends QueryInserter
         }
 
         $update = QuerySeter::schemaUpdateType( (int) $user );
-        $_SESSION['type'] = $type;
+        $_SESSION['type_user'] = $type;
     }
 
     public function newBuy(int $nft, int $quantity): void
