@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Entitys\User;
 use App\Services\QuerysDatabase\QueryInserter;
 use Src\Helpers\MessageAuth;
+use Src\Middlewares\RenameFiles;
 use Src\Middlewares\AuthenticatorMiddleware;
 
 class Authentication extends QueryInserter
@@ -39,15 +40,17 @@ class Authentication extends QueryInserter
 
         if($verifyEmail === false || $verifyEmail === false || $verifyPassword === false || $verifyImage === false) return;
 
-        $launch = QueryInserter::schemaSetUser( (string) $name, (string) $email, (string) $password, (string) $image['name'], (string) $type );
+        $fileName = RenameFiles::renameImage( (string) $name, (string) $image['name'] );
+
+        $launch = QueryInserter::schemaSetUser( (string) $name, (string) $email, (string) $password, (string) $fileName, (string) $type );
         
         if(!$launch){
             MessageAuth::launchMessage('error', 'Error registering!');
             return;
         }
 
-        move_uploaded_file($image['tmp_name'], dirname(__DIR__, 2). '\storage\users\\' . $image['name']);
-        new User( (int) $launch, (string) $name, (string) $email, (string) $password, (string) $image['name'], (string) $type );
+        move_uploaded_file($image['tmp_name'], dirname(__DIR__, 2). '\storage\users\\' . $fileName);
+        new User( (int) $launch, (string) $name, (string) $email, (string) $password, (string) $fileName, (string) $type );
 
         header('Location: '.BASE_URL.'/home');
     }

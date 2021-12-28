@@ -5,6 +5,7 @@ namespace App\Models\Entitys;
 use App\Services\QuerysDatabase\QuerySeter;
 use Src\Repository\UserRepository;
 use Src\Helpers\MessageAuth;
+use Src\Middlewares\RenameFiles;
 use Src\Middlewares\AuthenticatorMiddleware;
 
 class User extends UserRepository
@@ -118,11 +119,13 @@ class User extends UserRepository
 
         if($verifyEmail === false || $verifyEmail === false || $verifyImage === false) return;
 
-        $profile = QuerySeter::schemaUpdateUser( (int) $user, (string) $name, (string) $email, (string) $image['name'] );
+        $fileName = RenameFiles::renameImage( (string) $name, (string) $image['name'] );
 
-        move_uploaded_file($image['tmp_name'], dirname(__DIR__, 3). '\storage\users\\' . $image['name']);
+        $profile = QuerySeter::schemaUpdateUser( (int) $user, (string) $name, (string) $email, (string) $fileName );
 
-        new User( (int) $_SESSION['id'], (string) $name, (string) $email, (string) $_SESSION['password'], (string) $image['name'], (string) $_SESSION['type_user'] );
+        move_uploaded_file($image['tmp_name'], dirname(__DIR__, 3). '\storage\users\\' . $fileName);
+
+        new User( (int) $_SESSION['id'], (string) $name, (string) $email, (string) $_SESSION['password'], (string) $fileName, (string) $_SESSION['type_user'] );
         header('Refresh');
     }
 
