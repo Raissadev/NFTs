@@ -19,6 +19,8 @@
 
 
 
+<p>Observação: Use o comando "blockchain-wallet-service start --port 3000" para rodar o blockchain!</p>
+
 <hr />
 <h3>Autor</h3>
 <h4>Raissa Arcaro Daros</h4>
