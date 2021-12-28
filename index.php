@@ -42,6 +42,7 @@ $Router->get("/shop-vendor/?id=", "$Controllers\MarketController", "shopVendor")
 $Router->get("/nft/?id=", "$Controllers\MarketController", "nft");
 $Router->get("/global-nft/?id=", "$Controllers\MarketController", "globalNFT");
 $Router->get("/global-nfts", "$Controllers\Controller", "globalNFTs");
+$Router->get("/my-nfts", "$Controllers\ClientController", "myNTFs");
 $Router->get("/become-vendor", "$Controllers\VendorController", "becomeVendor");
 $Router->get("/wallet", "$Controllers\Controller", "wallet");
 $Router->get("/exception", "$Controllers\Controller", "exception");

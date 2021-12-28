@@ -17,7 +17,7 @@
             <div class="mr-top-small">
                 <p class="font-size-little mr-bottom-tiny">Current Bid</p>
                 <div class="items-flex align-center just-space-between">
-                    <h4 class="price"><?= $nft['price_crypto'] ?> <?= $nft['crypto_type'] ?></h4>
+                    <h4 class="price"><?= $nft['crypto_price'] ?> <?= $nft['crypto_type'] ?></h4>
                     <h5><?= $nft['price'] ?> $</h5>
                 </div>
             </div>

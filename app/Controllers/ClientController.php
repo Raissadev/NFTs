@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Services\MainView;
 use App\Models\Entitys\User;
 use App\Models\Market;
+use App\Models\NFT;
 use App\Models\Authentication;
 
 class ClientController
@@ -32,6 +33,13 @@ class ClientController
     public function storeUpdateBlockchain(): void
     {
         User::newBlockchain( (int) $_SESSION['id'], (string) $_POST['blockchain'], (string) $_POST['blockchain_password'] );
+    }
+
+    public function myNTFs(): void
+    {
+        $nftsClient = (new NFT)->getListNFT( (int) $_SESSION['id'] );
+        $nftsClient = (new NFT)->getListNFT( (int) $_SESSION['id'] );
+        MainView::render('my-nfts', [ 'isUser' => $this->funcsUser, 'nftsClient' => $nftsClient ]);
     }
 
 }

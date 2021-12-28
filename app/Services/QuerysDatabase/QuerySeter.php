@@ -20,10 +20,10 @@ class QuerySeter
         return $launch;
     }
 
-    public static function schemaUpdateNFT(int $nft, int $owner, int $shop, string $name, string $description, string $quantity, string $blockchain, string $price, string $crypto, string $cryptoType): void
+    public static function schemaUpdateNFT(int $nft, int $owner, int $shop, string $name, string $description, string $blockchain, string $price, string $currency, string $crypto, string $cryptoType): void
     {
-        $update = ConnectionFactory::connect()->prepare("UPDATE nfts SET shop = ?, name = ?, description = ?, quantity = ?, blockchain = ?, price = ?, price_crypto = ?, crypto_type = ? WHERE id = $nft AND owner = $owner");
-        $update->execute([ $shop, $name, $description, $quantity, $blockchain, $price, $crypto, $cryptoType ]);
+        $update = ConnectionFactory::connect()->prepare("UPDATE nfts SET shop = ?, name = ?, description = ?, blockchain = ?, price = ?, currency = ?, crypto_price = ?, crypto_type = ? WHERE id = $nft AND owner = $owner");
+        $update->execute([ $shop, $name, $description, $blockchain, $price, $currency, $crypto, $cryptoType ]);
     }
 
     public static function schemaCreateBlockchain(int $user, string $blockchain, string $blockchainPassword): void
@@ -32,11 +32,6 @@ class QuerySeter
         $insert->execute([ $blockchain, $blockchainPassword ]);
     }
 
-    public static function schemaUpdateQuantityNFT(int $nft, int $quantity): void
-    {
-        $update = ConnectionFactory::connect()->prepare("UPDATE nfts SET quantity = ? WHERE id = $nft");
-        $update->execute([ $quantity ]);
-    }
     
 }
 

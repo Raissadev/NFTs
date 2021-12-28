@@ -20,7 +20,6 @@
                     <option value="AUD">Dólar australiano</option>
                     <option value="CAD">Dólar canadense</option>
                 </select>
-                <input type="number" name="quantity" class="w100 mr-bottom-small" placeholder="Quantity of NFTs" autocomplete="off" />
                 <input type="text" name="price" size="12" onKeyUp="coinMask(this, event)" class="w100 mr-bottom-small" autocomplete="off" placeholder="Price of your NFT in Dolar" />
                 <input type="password" name="blockchain" class="w100 mr-bottom-small" value="<?= $params['blockchain'] ?>" placeholder="Your blockchain" />
             </div>

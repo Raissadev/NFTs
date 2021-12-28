@@ -80,12 +80,12 @@ class VendorController extends UserVendor
 
     public function storeRegisterNFT(): void
     {
-        (new UserVendor)->newNFT($_SESSION['id'], $_POST['shop'], $_POST['name'], $_POST['description'], $_POST['quantity'], $_POST['blockchain'], $_FILES['image'], $_POST['price'], $_POST['currency'], $_POST['crypto_type']);
+        (new UserVendor)->newNFT($_SESSION['id'], $_POST['shop'], $_POST['name'], $_POST['description'], $_POST['blockchain'], $_FILES['image'], $_POST['price'], $_POST['currency'], $_POST['crypto_type']);
     }
 
     public function storeUpdateNFT(): void
     {
-        (new UserVendor)->updateNFT($_GET['id'], $_SESSION['id'], $_POST['shop'], $_POST['name'], $_POST['description'], $_POST['quantity'], $_POST['blockchain'], $_POST['price'], $_POST['currency'], $_POST['crypto_type']);
+        (new UserVendor)->updateNFT($_GET['id'], $_SESSION['id'], $_POST['shop'], $_POST['name'], $_POST['description'], $_POST['blockchain'], $_POST['price'], $_POST['currency'], $_POST['crypto_type']);
     }
 
     public function storeUpdateProfile(): void

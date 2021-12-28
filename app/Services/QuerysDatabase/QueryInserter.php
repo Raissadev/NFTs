@@ -22,16 +22,22 @@ class QueryInserter
         return $launch;
     }
 
-    protected static function schemaSetNFT(int $owner, int $shop, string $name, string $description, string $quantity, string $blockchain, string $image, string $price, string $crypto, string $cryptoType): void
+    protected static function schemaSetNFT(int $owner, int $shop, string $name, string $description, string $blockchain, string $image, string $price, string $currency, string $crypto, string $cryptoType): void
     {
-        $insert = ConnectionFactory::connect()->prepare("INSERT INTO nfts (owner, shop, name, description, quantity, blockchain, image, price, price_crypto, crypto_type) VALUES (?,?,?,?,?,?,?,?,?,?)");
-        $insert->execute([ $owner, $shop, $name, $description, $quantity, $blockchain, $image, $price, $crypto, $cryptoType ]);
+        $insert = ConnectionFactory::connect()->prepare("INSERT INTO nfts (owner, shop, name, description, blockchain, image, price, currency, crypto_price, crypto_type) VALUES (?,?,?,?,?,?,?,?,?,?)");
+        $insert->execute([ $owner, $shop, $name, $description, $blockchain, $image, $price, $currency, $crypto, $cryptoType ]);
     }
 
     public static function schemaSetShop(int $owner, string $name, string $banner): void
     {
         $insert = ConnectionFactory::connect()->prepare("INSERT INTO shops_vendors (owner, name, banner) VALUES (?,?,?)");
         $insert->execute([ $owner, $name, $banner ]);
+    }
+
+    public static function schemaAddNFTtoList(int $user, int $nft): void
+    {
+        $insert = ConnectionFactory::connect()->prepare("INSERT INTO nfts_purchases (owner, nft) VALUES (?,?)");
+        $insert->execute([ $user, $nft ]);
     }
 
 }

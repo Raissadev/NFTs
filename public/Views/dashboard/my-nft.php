@@ -25,7 +25,6 @@
                     <option value="AUD">Dólar australiano</option>
                     <option value="CAD">Dólar canadense</option>
                 </select>
-                <input type="number" value="<?= $params['nft']['quantity'] ?>" name="quantity" class="w100 mr-bottom-small" placeholder="Quantity of NFTs" />
                 <input type="text" name="price" size="12" onKeyUp="coinMask(this, event)" value="<?= $params['nft']['price'] ?>" class="w100 mr-bottom-small" placeholder="Price of your NFT in Dolar" />
                 <input type="text" name="blockchain" value="<?= $params['nft']['blockchain'] ?>" class="w100 mr-bottom-small" placeholder="Your blockchain" />
                 <button type="submit" name="update-nft" class="w100">Update NFT <i class="ri-quill-pen-fill mr-left-small"></i></button>

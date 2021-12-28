@@ -31,7 +31,7 @@ class UserVendor extends QueryInserter
         return $response;
     }
 
-    protected function newNFT(int $owner, int $shop, string $name, string $description, string $quantity, string $blockchain, array $image, string $price, string $currency, string $cryptoType): void
+    protected function newNFT(int $owner, int $shop, string $name, string $description, string $blockchain, array $image, string $price, string $currency, string $cryptoType): void
     {
         $verifyName = AuthenticatorNFT::verifyName($name);
         $verifyImage = AuthenticatorNFT::verifyImage($image);
@@ -41,7 +41,7 @@ class UserVendor extends QueryInserter
 
         $priceConvert = str_replace(array('.', ','), '', $price);
         $crypto = (new BlockchainRequest)->exchangeRates($currency, (string) $priceConvert);
-        $insert = QueryInserter::schemaSetNFT( (int) $owner, (int) $shop, (string) $name, (string) $description, (string) $quantity, (string) $blockchain, (string) $image['name'], (string) $price, (int) $crypto, (string) $cryptoType );
+        $insert = QueryInserter::schemaSetNFT( (int) $owner, (int) $shop, (string) $name, (string) $description, (string) $blockchain, (string) $image['name'], (string) $price, (string) $currency, (int) $crypto, (string) $cryptoType );
         
         if(!empty($insert)){
             MessageAuth::launchMessage('error', 'Invalid data!');
@@ -54,11 +54,11 @@ class UserVendor extends QueryInserter
         header('Refresh');
     }
 
-    protected function updateNFT(int $nft, int $owner, int $shop, string $name, string $description, string $quantity, string $blockchain, string $price, string $currency, string $cryptoType): void
+    protected function updateNFT(int $nft, int $owner, int $shop, string $name, string $description, string $blockchain, string $price, string $currency, string $cryptoType): void
     {
         $priceConvert = str_replace(array('.', ','), '', $price);
         $crypto = (new BlockchainRequest)->exchangeRates($currency, (string) $priceConvert);
-        $update = QuerySeter::schemaUpdateNFT( (int) $nft, (int) $owner, (int) $shop, (string) $name, (string) $description, (string) $quantity, (string) $blockchain, (string) $price, (int) $crypto, (string) $cryptoType );
+        $update = QuerySeter::schemaUpdateNFT( (int) $nft, (int) $owner, (int) $shop, (string) $name, (string) $description, (string) $blockchain, (string) $price, (string) $currency, (int) $crypto, (string) $cryptoType );
         
         if(!empty($update)){
             MessageAuth::launchMessage('error', 'Invalid data!');

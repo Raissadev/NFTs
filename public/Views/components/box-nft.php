@@ -10,7 +10,7 @@
                 <p>by <?= isset($owner['name']) ? $owner['name'] : $params['owner']['name'] ?></p>
             </div>
             <div class="col w30 text-center">
-                <a class="button button-clean-purple mr-bottom-tiny w90 center"><?= $nft['price_crypto'] ?> <?= $nft['crypto_type'] ?></a>
+                <a class="button button-clean-purple mr-bottom-tiny w90 center"><?= $nft['crypto_price'] ?> <?= $nft['crypto_type'] ?></a>
                 <p class="limit-line-one"><?= $nft['quantity'] ?> in stock</p>
             </div>
         </div>

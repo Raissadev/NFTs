@@ -14,7 +14,7 @@
                     </figure>
                     <div class="row">
                         <h5 class="limit-line-one"> <a style="color:var(--purple)">New Nft</a> Crimson are five </h5>
-                        <h5 class="font-size-small"><?= $nft['price_crypto'] ?> <?= $nft['crypto_type'] ?></h5>
+                        <h5 class="font-size-small"><?= $nft['crypto_price'] ?> <?= $nft['crypto_type'] ?></h5>
                         <p class="font-size-small"><?= substr($nft['created_at'], 0, -7) ?></p>
                     </div>
                 </li>

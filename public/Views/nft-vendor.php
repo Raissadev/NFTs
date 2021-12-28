@@ -15,7 +15,7 @@
                 <div class="text-infos mr-top-small mr-bottom-default">
                     <h1 class="font-title mr-bottom-small"><?= $params['nft']['name'] ?></h1>
                     <h5 class="mr-bottom-small"><?= $params['nft']['description'] ?></h5>
-                    <p><?= $params['nft']['quantity'] ?> in Stock</p>
+                    <p>Currency <?= $params['nft']['currency'] ?></p>
                 </div>
                 <div class="items-flex align-center mr-bottom-bigger">
                     <figure class="img-user-small mr-right-tiny">
@@ -26,7 +26,7 @@
                 <div class="item items-flex align-center just-space-betweeen mr-bottom-default">
                     <div class="col w50">
                         <p class="font-size-little mr-bottom-little limit-line-one">Current Bit</p>
-                        <h2 class="limit-line-one"><?= $params['nft']['price_crypto'] ?> <?= $params['nft']['crypto_type'] ?></h2>
+                        <h2 class="limit-line-one"><?= $params['nft']['crypto_price'] ?> <?= $params['nft']['crypto_type'] ?></h2>
                     </div>
                     <div class="col w50">
                         <p class="font-size-little mr-bottom-little limit-line-one">Price in Dolar</p>
@@ -45,12 +45,10 @@
             <input type="password" name="guid" placeholder="Address your blockchain" value="<?= $params['blockchain']['blockchain'] ?>" class="w100 mr-bottom-small" />
             <input type="password" name="password" placeholder="Password your blockchain" value="<?= $params['blockchain']['blockchain_password'] ?>" class="w100 mr-bottom-small" />   
             <input type="hidden" name="to" value="<?= $params['owner']['blockchain'] ?>" />   
-            <input type="hidden" name="amount" value="<?= $params['nft']['price_crypto'] ?>" />   
+            <input type="hidden" name="amount" value="<?= $params['nft']['crypto_price'] ?>" />   
             <input type="hidden" name="nft-identifier" value="<?= $params['nft']['id'] ?>" />   
-            <input type="hidden" name="quantity" value="<?= $params['nft']['quantity'] ?>" />   
             <button type="submit" name="buy" class="w30 center w40-dv-small">Buy now</button>   
         </form>
     </section>
-
 
 </section>
