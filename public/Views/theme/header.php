@@ -22,7 +22,7 @@
                 <li><a href="/home">Home</a></li>
                 <li><a href="/market">Market</a></li>
                 <li><a href="/global-nfts">Global NFTs</a></li>
-                <li><a href="/wallet">Wallet</a></li>
+                <li><a href="/my-nfts">My NFTs</a></li>
                 <li><a href="<?= $params['isUser']['TypeLink'] ?>"><?= $params['isUser']['TypeUser'] ?></a></li>
             </ul>
         </nav>

@@ -9,6 +9,7 @@ use Src\Repository\ShopVendorRepository;
 use Src\Helpers\MessageAuth;
 use App\Models\API\BlockchainRequest;
 use Src\Middlewares\AuthenticatorNFT;
+use Src\Middlewares\RenameFiles;
 
 class UserVendor extends QueryInserter
 {
@@ -40,15 +41,17 @@ class UserVendor extends QueryInserter
         if($verifyName === false || $verifyImage === false || $verifyPrice === false) return;
 
         $priceConvert = str_replace(array('.', ','), '', $price);
+        $fileName = RenameFiles::renameImage( (string) $name, (string) $image['name'] );
+
         $crypto = (new BlockchainRequest)->exchangeRates($currency, (string) $priceConvert);
-        $insert = QueryInserter::schemaSetNFT( (int) $owner, (int) $shop, (string) $name, (string) $description, (string) $blockchain, (string) $image['name'], (string) $price, (string) $currency, (int) $crypto, (string) $cryptoType );
+        $insert = QueryInserter::schemaSetNFT( (int) $owner, (int) $shop, (string) $name, (string) $description, (string) $blockchain, (string) $fileName, (string) $price, (string) $currency, (int) $crypto, (string) $cryptoType );
         
         if(!empty($insert)){
             MessageAuth::launchMessage('error', 'Invalid data!');
             return;
         }
 
-        move_uploaded_file($image['tmp_name'], dirname(__DIR__, 3). '\storage\nfts\\' . $image['name']);
+        move_uploaded_file($image['tmp_name'], dirname(__DIR__, 3). '\storage\nfts\\' . $fileName);
 
         MessageAuth::launchMessage('success', 'NFT successfully registered!');
         header('Refresh');
@@ -76,14 +79,16 @@ class UserVendor extends QueryInserter
 
         if($verifyName === false || $verifyBanner === false) return;
 
-        $insert = QueryInserter::schemaSetShop( (int) $owner, (string) $name, (string) $banner['name'] );
+        $fileName = RenameFiles::renameImage( (string) $name, (string) $banner['name'] );
+
+        $insert = QueryInserter::schemaSetShop( (int) $owner, (string) $name, (string) $fileName );
         
         if(!empty($insert)){
             MessageAuth::launchMessage('error', 'Invalid data!');
             return;
         }
 
-        move_uploaded_file($banner['tmp_name'], dirname(__DIR__, 3). '\storage\shops\\' . $banner['name']);
+        move_uploaded_file($banner['tmp_name'], dirname(__DIR__, 3). '\storage\shops\\' . $fileName);
 
         MessageAuth::launchMessage('success', 'Shop successfully registered!');
     }
@@ -98,11 +103,6 @@ class UserVendor extends QueryInserter
 
         $update = QuerySeter::schemaUpdateType( (int) $user );
         $_SESSION['type_user'] = $type;
-    }
-
-    public function newBuy(int $nft, int $quantity): void
-    {
-        $update = QuerySeter::schemaUpdateQuantityNFT( (int) $nft, (int) $quantity );
     }
 
 }
