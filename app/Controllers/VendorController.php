@@ -87,27 +87,22 @@ class VendorController extends UserVendor
 
     public function storeRegisterNFT(): void
     {
-        if(isset($_POST['register-nft'])){
-            (new UserVendor)->newNFT($_SESSION['id'], $_POST['shop'], $_POST['name'], $_POST['description'], $_POST['quantity'], $_POST['blockchain'], $_FILES['image'], $_POST['price'], $_POST['currency'], $_POST['crypto_type']);
-        }
+        (new UserVendor)->newNFT($_SESSION['id'], $_POST['shop'], $_POST['name'], $_POST['description'], $_POST['quantity'], $_POST['blockchain'], $_FILES['image'], $_POST['price'], $_POST['currency'], $_POST['crypto_type']);
     }
 
     public function storeUpdateNFT(): void
     {
-        if(isset($_POST['update-nft'])){
-            (new UserVendor)->updateNFT($_GET['id'], $_SESSION['id'], $_POST['shop'], $_POST['name'], $_POST['description'], $_POST['quantity'], $_POST['blockchain'], $_POST['price'], $_POST['currency'], $_POST['crypto_type']);
-        }
+        (new UserVendor)->updateNFT($_GET['id'], $_SESSION['id'], $_POST['shop'], $_POST['name'], $_POST['description'], $_POST['quantity'], $_POST['blockchain'], $_POST['price'], $_POST['currency'], $_POST['crypto_type']);
     }
 
     public function storeUpdateProfile(): void
     {
-        if(isset($_POST['update-profile'])){
-            User::authUpdateProfile( (int) $_SESSION['id'], (string) $_POST['name'], (string) $_POST['email'], (array) $_FILES['image'] );
+        User::authUpdateProfile( (int) $_SESSION['id'], (string) $_POST['name'], (string) $_POST['email'], (array) $_FILES['image'] );
             
-            if(isset($_POST['blockchain'])){
-                User::newBlockchain( (int) $_SESSION['id'], (string) $_POST['blockchain'], (string) $_POST['blockchain_password'] );
-            }
+        if(isset($_POST['blockchain'])){
+            User::newBlockchain( (int) $_SESSION['id'], (string) $_POST['blockchain'], (string) $_POST['blockchain_password'] );
         }
+
     }
 
     public function becomeVendor(): void

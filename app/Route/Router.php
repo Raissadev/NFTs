@@ -19,16 +19,21 @@ class Router
 
     public function post(string $path, string $class, string $params): void
     {
+        if(!$_POST) return;
+        
         $this->httpMethod = $_SERVER['REQUEST_METHOD'] = "POST";
         
         if(strpos($_SERVER['REQUEST_URI'], $path) !== false){
             ((new $class)->$params());
         }
+        
     
     }
 
     public function put(string $path, string $class, string $params): void
     {
+        if(!$_POST) return;
+
         $this->httpMethod = $_SERVER['REQUEST_METHOD'] = "PUT";
 
         if(strpos($_SERVER['REQUEST_URI'], $path) !== false){
@@ -39,6 +44,8 @@ class Router
 
     public function delete(string $path, string $class, string $params): void
     {
+        if(!$_POST) return;
+
         $this->httpMethod = $_SERVER['REQUEST_METHOD'] = "DELETE";
 
         if(strpos($_SERVER['REQUEST_URI'], $path) !== false){

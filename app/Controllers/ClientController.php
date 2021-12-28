@@ -20,16 +20,12 @@ class ClientController
 
     public function storeUpdateProfile(): void
     {
-        if(isset($_POST['update-profile-client'])){
-            User::authUpdateProfile( (int) $_SESSION['id'], (string) $_POST['name'], (string) $_POST['email'], (array) $_FILES['image'] );
-        }
+        User::authUpdateProfile( (int) $_SESSION['id'], (string) $_POST['name'], (string) $_POST['email'], (array) $_FILES['image'] );
     }
 
     public function storeUpdateBlockchain(): void
     {
-        if(isset($_POST['register-blockchain-client'])){
-            User::newBlockchain( (int) $_SESSION['id'], (string) $_POST['blockchain'], (string) $_POST['blockchain_password'] );
-        }
+        User::newBlockchain( (int) $_SESSION['id'], (string) $_POST['blockchain'], (string) $_POST['blockchain_password'] );
     }
 
 }
