@@ -7,57 +7,47 @@ class Router
 
     private string $httpMethod;
     private array $request;
+    private string $url;
 
     public function __construct()
     {
         $this->request = $_POST;
+        $this->httpMethod = $_SERVER['REQUEST_METHOD'];
+        $this->url = $_SERVER['REQUEST_URI'];
     }
 
     public function get(string $path, string $class, string $params): void
     {
-        $this->httpMethod = $_SERVER['REQUEST_METHOD'] = "GET";
-
-        if(strpos($_SERVER['REQUEST_URI'], $path) !== false){
-            ((new $class)->$params());
+        if(strpos($this->url, $path) !== false){
+            (new $class)->$params();
         }
-
     }
 
     public function post(string $path, string $class, string $params): void
     {
         if(!$this->request) return;
-        
-        $this->httpMethod = $_SERVER['REQUEST_METHOD'] = "POST";
-        
-        if(strpos($_SERVER['REQUEST_URI'], $path) !== false){
-            ((new $class)->$params());
+                
+        if(strpos($this->url, $path) !== false){
+            (new $class)->$params();
         }
-        
-    
     }
 
     public function put(string $path, string $class, string $params): void
     {
         if(!$this->request) return;
 
-        $this->httpMethod = $_SERVER['REQUEST_METHOD'] = "PUT";
-
-        if(strpos($_SERVER['REQUEST_URI'], $path) !== false){
-            ((new $class)->$params());
+        if(strpos($this->url, $path) !== false){
+            (new $class)->$params();
         }
-        
     }
 
     public function delete(string $path, string $class, string $params): void
     {
         if(!$this->request) return;
 
-        $this->httpMethod = $_SERVER['REQUEST_METHOD'] = "DELETE";
-
-        if(strpos($_SERVER['REQUEST_URI'], $path) !== false){
-            ((new $class)->$params());
+        if(strpos($this->url, $path) !== false){
+            (new $class)->$params();
         }
-
     }
 
 }

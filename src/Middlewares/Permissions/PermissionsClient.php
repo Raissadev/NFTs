@@ -13,7 +13,6 @@ final class PermissionsClient
     {
         $uri = [
             "dashboard",
-            "profile",
             "register-nft",
             "my-nfts",
             "my-nft",

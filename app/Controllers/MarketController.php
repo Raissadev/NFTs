@@ -15,6 +15,7 @@ class MarketController extends Market
     public function __construct()
     {
         $this->funcsUser = User::isUser();
+        $this->userBlockchain = User::getMyBlockchain( $_SESSION['id'] );
     }
 
     public function shop(): void
@@ -28,25 +29,24 @@ class MarketController extends Market
 
     public function shopVendor(): void
     {
-        $nfts = (new Market)->fetchNft( "WHERE owner = $_GET[id]" );
-        $owner = (new Market)->getOwner( $_GET['id'] );
-        $shop = (new Market)->getShop( $_GET['id'] );
+        $nfts = (new Market)->fetchNft("WHERE owner = $_GET[id]");
+        $owner = (new Market)->getOwner($_GET['id']);
+        $shop = (new Market)->getShop($_GET['id']);
         MainView::render('shop-vendor', [ 'isUser' => $this->funcsUser, 'nfts' => $nfts, 'owner' => $owner, 'shop' => $shop]);
     }
 
     public function nft(): void
     {
-        $blockchain = User::getMyBlockchain($_SESSION['id']);
         $nft = (new Market)->getNFT($_GET['id']);
         $owner = (new Market)->getOwner($nft['owner']);
-        MainView::render('nft-vendor', [ "isUser" => $this->funcsUser, 'nft' => $nft, 'owner' => $owner, 'blockchain' => $blockchain ]);
+        MainView::render('nft-vendor', [ "isUser" => $this->funcsUser, 'nft' => $nft, 'owner' => $owner, 'blockchain' => $this->userBlockchain ]);
     }
 
     public function globalNFT(): void
     {
         $blockchain = User::getMyBlockchain($_SESSION['id']);
         $nft = (new BlockchainRequest)->nftSingle($_GET['id']);
-        MainView::render('global-nft', [ "isUser" => $this->funcsUser, 'nft' => $nft, 'blockchain' => $blockchain ]);
+        MainView::render('global-nft', [ "isUser" => $this->funcsUser, 'nft' => $nft, 'blockchain' => $this->userBlockchain ]);
     }
 
 }

@@ -18,9 +18,7 @@ class AuthenticationController extends Authentication
 
     public function storeSignIn(): void
     {
-        if(isset($_POST['sign-in'])){
-            (new Authentication)->authSignIn( (string) $_POST['email'], (string) $_POST['password'] );
-        }
+        (new Authentication)->authSignIn( (string) $_POST['email'], (string) $_POST['password'] );
     }
 
     public function signUp(): void 
@@ -30,9 +28,8 @@ class AuthenticationController extends Authentication
 
     public function storeSignUp(): void 
     {
-        if(isset($_POST['sign-up'])){
-            (new Authentication)->authSignUp( (string) $_POST['name'], (string) $_POST['email'], (string) $_POST['password'], (array) $_FILES['image'], (string) "client" );
-        }
+        (new Authentication)->authSignUp( (string) $_POST['name'], (string) $_POST['email'], (string) $_POST['password'], (array) $_FILES['image'], (string) "client" );
+        
         if(isset($_POST['create-wallet'])){
             (new Blockchain)->createWallet($_POST['email'], $_POST['password']);
         }
@@ -40,16 +37,12 @@ class AuthenticationController extends Authentication
 
     public function storeRequestBlockchain(): void
     {
-        if(isset($_POST['request-wallet'])){
-            (new Blockchain)->createWallet($_POST['email'], $_POST['password']);
-        }
+        (new Blockchain)->createWallet($_POST['email'], $_POST['password']);
     }
 
     public function storeCreateWallet(): void
     {
-        if(isset($_POST['register-wallet'])){
-            if(isset($_SESSION['id'])) User::newBlockchain( (int) $_SESSION['id'], (string) $_POST['blockchain'], (string) $_POST['blockchain_password'] );
-        }
+        if(isset($_SESSION['id'])) User::newBlockchain( (int) $_SESSION['id'], (string) $_POST['blockchain'], (string) $_POST['blockchain_password'] );
     }
 
 }

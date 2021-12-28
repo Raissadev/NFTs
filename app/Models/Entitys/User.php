@@ -80,12 +80,9 @@ class User extends UserRepository
     {        
         if(!isset($_SESSION['id'])) return $buttons[] = [ "Text" => "Sign Up", "Link" => "/sign-up", "TypeUser" => "Register", "TypeLink" => "/sign-up" ];
 
-        $user = UserRepository::schemaGetTypeUser( (int) $_SESSION['id'] );
-        $_SESSION['type_user'] = $user['type_user'];
-
-        if($user['type_user'] === "vendor"){
+        if($_SESSION['type_user'] === "vendor"){
             $buttons[] = [ "Text" => "Dasboard", "Link" => "/dashboard", "TypeUser" => "Create NFT", "TypeLink" => "/dashboard/create-nft" ];
-        }elseif($user['type_user'] === "client"){
+        }elseif($_SESSION['type_user'] === "client"){
             $buttons[] = [ "Text" => "Profile", "Link" => "/profile", "TypeUser" => "Become Vendor", "TypeLink" => "/become-vendor?type=vendor" ];
         }
 

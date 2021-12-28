@@ -56,20 +56,20 @@ class Blockchain
 
     public function send()
     {
-        $ch = curl_init($this->base . $this->endpoint);
+        try {
+            $ch = curl_init($this->base . $this->endpoint);
 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $response = json_decode(curl_exec($ch));
-        curl_close($ch);
-        
-        if(empty($response)){
-            MessageAuth::launchMessage('error', 'Error sended!');
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $response = json_decode(curl_exec($ch));
+            curl_close($ch);
+
+            MessageAuth::launchMessage('success', 'Success!');
+            return $response;
+
+        } catch (Exception $e) {
+            MessageAuth::launchMessage('error', 'Request error!');
             return;
         }
-
-        MessageAuth::launchMessage('success', 'Success!');
-        return $response;
-
     }
 
 }

@@ -45,9 +45,7 @@ class VendorController extends UserVendor
 
     public function storeShopVendor(): void
     {
-        if(isset($_POST['register-shop'])){
-            (new UserVendor)->registerShop($_SESSION['id'], $_POST['name'], $_FILES['banner']);
-        }
+        (new UserVendor)->registerShop($_SESSION['id'], $_POST['name'], $_FILES['banner']);
     }
 
     public function profile(): void

@@ -51,6 +51,7 @@ class UserVendor extends QueryInserter
         move_uploaded_file($image['tmp_name'], dirname(__DIR__, 3). '\storage\nfts\\' . $image['name']);
 
         MessageAuth::launchMessage('success', 'NFT successfully registered!');
+        header('Refresh');
     }
 
     protected function updateNFT(int $nft, int $owner, int $shop, string $name, string $description, string $quantity, string $blockchain, string $price, string $currency, string $cryptoType): void
