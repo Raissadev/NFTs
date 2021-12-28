@@ -27,12 +27,10 @@ class Server
                 $callback = "Você disse: ";
                 socket_write($accept, $callback, strlen($callback));
                 echo $read;
-            }while(true);
-
+            } while(true);
                 socket_close($accept);
 
-            }while(true);
-            
+            } while(true);
                 socket_close($socket);
 
         }

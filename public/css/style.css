@@ -97,6 +97,10 @@ section.container-nfts .list-nfts .box-nft:hover{
 section.container-infos .row div.item {
     padding:1rem;
 }
+section.container-infos .wrap .col:nth-of-type(1) h5 {
+    line-height: 1.5;
+    font-weight: 300;
+}
 section.container-invite .banner-action {
     border-radius: 30px;
     padding:2rem;

@@ -105,32 +105,32 @@
 <section class="container-infos mr-bottom-bigger">
     <div class="wrap w90 center items-flex align-center flex-wrap-dv-small">
         <div class="col w45 mr-right-small w100-dv-small mr-dv-bottom-default">
-            <h2 class="font-title mr-bottom-small">Hot Collection 👍</h2>
-            <h4 class="w80">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet congue tortor.</h4>
-            <a class="button w30 mr-top-default">Explode</a>
+            <h2 class="font-title mr-bottom-small">Hot it works 👍</h2>
+            <h5 class="w80">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a libero vel metus sollicitudin cursus. Nullam suscipit ex a lorem interdum, lacinia aliquet felis dapibus. Vestibulum efficitur venenatis felis.</h5>
+            <a href="/market" class="button w30 mr-top-default">Explore</a>
         </div>
         <div class="col w55 w100-dv-small">
             <div class="row items-flex just-space-between mr-bottom-small flex-wrap">
                 <div class="item w48 w100-dv-small mr-dv-bottom-small">
                     <a class="icon mr-bottom-small"><i class="ri-wallet-3-line"></i></a>
-                    <h4 class="mr-bottom-small">Hot Collection</h4>
+                    <h4 class="mr-bottom-small">Set up your wallet</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet <br /> congue tortor.</p>
                 </div>
                 <div class="item w48 w100-dv-small mr-dv-bottom-small">
-                    <a class="icon mr-bottom-small"><i class="ri-wallet-3-line"></i></a>
-                    <h4 class="mr-bottom-small">Hot Collection</h4>
+                    <a class="icon mr-bottom-small"><i class="ri-upload-cloud-2-line"></i></a>
+                    <h4 class="mr-bottom-small">Create your shop</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet <br /> congue tortor.</p>
                 </div>
             </div>
             <div class="row items-flex just-space-between flex-wrap">
                 <div class="item w48 w100-dv-small mr-dv-bottom-small">
-                    <a class="icon mr-bottom-small"><i class="ri-wallet-3-line"></i></a>
-                    <h4 class="mr-bottom-small">Hot Collection</h4>
+                    <a class="icon mr-bottom-small"><i class="ri-image-add-fill"></i></a>
+                    <h4 class="mr-bottom-small">Add your NFTs</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet <br /> congue tortor.</p>
                 </div>
                 <div class="item w48 w100-dv-small mr-dv-bottom-small">
-                    <a class="icon mr-bottom-small"><i class="ri-wallet-3-line"></i></a>
-                    <h4 class="mr-bottom-small">Hot Collection</h4>
+                    <a class="icon mr-bottom-small"><i class="ri-file-paper-2-fill"></i></a>
+                    <h4 class="mr-bottom-small">List item for sale</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet <br /> congue tortor.</p>
                 </div>
             </div>
