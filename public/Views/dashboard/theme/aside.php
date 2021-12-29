@@ -13,7 +13,7 @@
                         <img src="<?= BASE_STORAGE_NFTS ?>/<?= $nft['image'] ?>" />
                     </figure>
                     <div class="row">
-                        <h5 class="limit-line-one"> <a style="color:var(--purple)">New Nft</a> Crimson are five </h5>
+                        <h5 class="limit-line-one"> <a style="color:var(--purple)">New Nft</a> <?= $nft['name'] ?> </h5>
                         <h5 class="font-size-small"><?= $nft['crypto_price'] ?> <?= $nft['crypto_type'] ?></h5>
                         <p class="font-size-small"><?= substr($nft['created_at'], 0, -7) ?></p>
                     </div>

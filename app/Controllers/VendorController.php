@@ -78,7 +78,7 @@ class VendorController extends UserVendor
 
     public function myNFTs(): void
     {
-        $nfts = (new Market)->fetchNft( isset($_GET['search-my-nft']) ? "WHERE name LIKE '$_GET[name]%' AND owner = $_SESSION[id]" : "WHERE owner = $_SESSION[id]" );
+        $nfts = (new Market)->fetchNft( isset($_GET['search-my-nft']) ? "WHERE name LIKE '$_GET[name]%' AND owner = $_SESSION[id] ORDER BY id DESC" : "WHERE owner = $_SESSION[id] ORDER BY id DESC" );
         $users = (new Market)->getAllUsers("");
         MainView::dashboard('my-nfts', [ 'lastNFTs' => $this->lastNFTs, 'owners' => $this->owners, 'nfts' => $nfts, 'users' => $users ]);
     }

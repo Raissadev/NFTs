@@ -31,6 +31,17 @@ class ExistenceVerifier
         return false;
     }
 
+    public static function hasAnOwner(int $nft): bool
+    {
+        $nft = NFTRepository::schemaGetNftsPurchases( (int) $nft );
+        if($nft){
+            MessageAuth::launchMessage("error", "This NFT already has an owner!");
+            return true;
+        }
+
+        return false;
+    }
+
 
 }
 

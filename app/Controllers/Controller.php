@@ -22,7 +22,7 @@ class Controller
         $prices = array_slice((new BlockchainRequest)->getPrices(), 0, 2);
         $owners = (new Market)->getAllUsers("");
         $shops = (new Market)->getAllShops("LIMIT 6");
-        $nfts = (new Market)->fetchNft("LIMIT 3");
+        $nfts = (new Market)->fetchNft("ORDER BY id DESC LIMIT 3");
         MainView::render('home', [ "isUser" => $this->funcsUser , "nfts" => $nfts, "owners" => $owners, 'shops' => $shops, 'prices' => $prices ]);
     }
 

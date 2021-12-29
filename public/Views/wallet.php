@@ -18,7 +18,7 @@
         <form method="POST" action="/create-wallet" class="w50 wallet form-create-wallet mr-left-default hide w100-dv-small mr-none">
             <h1 class="mr-bottom-small">Register Your Wallet</h1>
             <input type="text" name="blockchain" placeholder="Your key blockchain" class="w100 mr-bottom-small" />
-            <input type="text" name="blockchain_password" placeholder="Your key blockchain" class="w100 mr-bottom-small" />
+            <input type="text" name="blockchain_password" placeholder="Your password blockchain" class="w100 mr-bottom-small" />
             <button type="submit" name="register-wallet" class="button-black w30 mr-bottom-default w50-dv-small">Register Wallet</button>
             <p class="button-previous text-right">Already have a Blockchain account? <a class="next"> Click here! </a> </p>
         </form>

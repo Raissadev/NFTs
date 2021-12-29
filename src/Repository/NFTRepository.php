@@ -58,6 +58,15 @@ class NFTRepository
         return false;
     }
 
+    public static function schemaGetNftsPurchases(int $nft)
+    {
+        $nft = ConnectionFactory::connect()->prepare("SELECT (nft) FROM nfts_purchases WHERE nft = $nft");
+        $nft->execute();
+        $response = $nft->fetch(\PDO::FETCH_ASSOC);
+        if($response) return true;
+        return false;
+    }
+
 }
 
 
