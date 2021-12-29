@@ -34,10 +34,11 @@ class VendorController extends UserVendor
 
     public function registerNFT(): void
     {
+        $collections = (new Market)->getAllCollections();
         $nfts = (new UserVendor)->getMyNFTs($_SESSION['id']);
         $blockchain = User::getMyBlockchain($_SESSION['id']);
         $shops = (new UserVendor)->getShops($_SESSION['id']);
-        MainView::dashboard('register-nft', [ 'lastNFTs' => $this->lastNFTs, 'owners' => $this->owners, 'shops' => $shops, 'blockchain' => $blockchain['blockchain'] ]);
+        MainView::dashboard('register-nft', [ 'lastNFTs' => $this->lastNFTs, 'owners' => $this->owners, 'shops' => $shops, 'blockchain' => $blockchain['blockchain'], 'collections' => $collections ]);
     }
 
     public function registerShopVendor(): void
@@ -45,9 +46,19 @@ class VendorController extends UserVendor
         MainView::dashboard('register-shop', [ 'lastNFTs' => $this->lastNFTs, 'owners' => $this->owners ]);
     }
 
+    public function registerCollectionVendor(): void
+    {
+        MainView::dashboard('register-collection', [ 'lastNFTs' => $this->lastNFTs, 'owners' => $this->owners ]);
+    }
+
     public function storeShopVendor(): void
     {
         (new UserVendor)->registerShop($_SESSION['id'], $_POST['name'], $_FILES['banner']);
+    }
+
+    public function storeCollectionVendor(): void
+    {
+        (new UserVendor)->registerCollection($_SESSION['id'], $_POST['name'], $_POST['about'], $_FILES['banner']);
     }
 
     public function profile(): void
@@ -82,7 +93,7 @@ class VendorController extends UserVendor
 
     public function storeRegisterNFT(): void
     {
-        (new UserVendor)->newNFT($_SESSION['id'], $_POST['shop'], $_POST['name'], $_POST['description'], $_POST['blockchain'], $_FILES['image'], $_POST['price'], $_POST['currency'], $_POST['crypto_type']);
+        (new UserVendor)->newNFT($_SESSION['id'], $_POST['shop'], $_POST['name'], $_POST['description'], $_POST['blockchain'], $_FILES['image'], $_POST['price'], $_POST['currency'], $_POST['crypto_type'], $_POST['collection']);
     }
 
     public function storeUpdateNFT(): void

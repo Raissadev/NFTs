@@ -11,6 +11,11 @@
                     <option value="<?= $shop['id'] ?>"><?= $shop['name'] ?></option>
                     <?php } ?>
                 </select>
+                <select name="collection" class="w100 mr-bottom-small">
+                    <?php foreach($params['collections'] as $collection){ ?>
+                    <option value="<?= $collection['id'] ?>"><?= $collection['name'] ?></option>
+                    <?php } ?>
+                </select>
                 <select name="crypto_type" class="w100 mr-bottom-small">
                     <option value="BTC">Bitcoin</option>
                 </select>

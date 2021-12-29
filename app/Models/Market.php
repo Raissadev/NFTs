@@ -6,6 +6,7 @@ use Src\Repository\NFTRepository;
 use Src\Repository\ShopVendorRepository;
 use Src\Repository\UserRepository;
 use Src\Repository\VendorRepository;
+use Src\Repository\CollectionsRepository;
 use Src\Helpers\MessageAuth;
 
 class Market extends NFTRepository
@@ -44,6 +45,12 @@ class Market extends NFTRepository
     public function getAllShops($query): array
     {
         $fetch = ShopVendorRepository::schemaGetAllShops($query);
+        return $fetch;
+    }
+
+    public function getAllCollections(): array
+    {
+        $fetch = CollectionsRepository::schemaFetchCollections();
         return $fetch;
     }
 

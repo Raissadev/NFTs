@@ -18,20 +18,26 @@ class QueryInserter
     {
         $user = ConnectionFactory::connect()->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
         $user->execute([ $email, $password ]);
-        $launch = $user->fetch(\PDO::FETCH_ASSOC);
-        return $launch;
+        $response = $user->fetch(\PDO::FETCH_ASSOC);
+        return $response;
     }
 
-    protected static function schemaSetNFT(int $owner, int $shop, string $name, string $description, string $blockchain, string $image, string $price, string $currency, string $crypto, string $cryptoType): void
+    protected static function schemaSetNFT(int $owner, int $shop, string $name, string $description, string $blockchain, string $image, string $price, string $currency, string $crypto, string $cryptoType, int $collection): void
     {
-        $insert = ConnectionFactory::connect()->prepare("INSERT INTO nfts (owner, shop, name, description, blockchain, image, price, currency, crypto_price, crypto_type) VALUES (?,?,?,?,?,?,?,?,?,?)");
-        $insert->execute([ $owner, $shop, $name, $description, $blockchain, $image, $price, $currency, $crypto, $cryptoType ]);
+        $insert = ConnectionFactory::connect()->prepare("INSERT INTO nfts (owner, shop, name, description, blockchain, image, price, currency, crypto_price, crypto_type, collection) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+        $insert->execute([ $owner, $shop, $name, $description, $blockchain, $image, $price, $currency, $crypto, $cryptoType, $collection ]);
     }
 
     public static function schemaSetShop(int $owner, string $name, string $banner): void
     {
         $insert = ConnectionFactory::connect()->prepare("INSERT INTO shops_vendors (owner, name, banner) VALUES (?,?,?)");
         $insert->execute([ $owner, $name, $banner ]);
+    }
+
+    public static function schemaSetCollection(int $owner, string $name, string $about, string $banner): void
+    {
+        $insert = ConnectionFactory::connect()->prepare("INSERT INTO collections (owner, name, about, banner) VALUES (?,?,?,?)");
+        $insert->execute([ $owner, $name, $about, $banner ]);
     }
 
     public static function schemaAddNFTtoList(int $user, int $nft): void

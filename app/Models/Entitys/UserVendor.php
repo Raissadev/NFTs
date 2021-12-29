@@ -33,7 +33,7 @@ class UserVendor extends QueryInserter
         return $response;
     }
 
-    protected function newNFT(int $owner, int $shop, string $name, string $description, string $blockchain, array $image, string $price, string $currency, string $cryptoType): void
+    protected function newNFT(int $owner, int $shop, string $name, string $description, string $blockchain, array $image, string $price, string $currency, string $cryptoType, int $collection): void
     {
         $verifyName = AuthenticatorNFT::verifyName($name);
         $verifyImage = AuthenticatorNFT::verifyImage($image);
@@ -46,7 +46,7 @@ class UserVendor extends QueryInserter
         $fileName = RenameFiles::renameImage( (string) $name, (string) $image['name'] );
 
         $crypto = (new BlockchainRequest)->exchangeRates($currency, (string) $priceConvert);
-        $insert = QueryInserter::schemaSetNFT( (int) $owner, (int) $shop, (string) $name, (string) $description, (string) $blockchain, (string) $fileName, (string) $price, (string) $currency, (int) $crypto, (string) $cryptoType );
+        $insert = QueryInserter::schemaSetNFT( (int) $owner, (int) $shop, (string) $name, (string) $description, (string) $blockchain, (string) $fileName, (string) $price, (string) $currency, (int) $crypto, (string) $cryptoType, (int) $collection );
         
         if(!empty($insert)){
             MessageAuth::launchMessage('error', 'Invalid data!');
@@ -91,6 +91,27 @@ class UserVendor extends QueryInserter
         }
 
         move_uploaded_file($banner['tmp_name'], dirname(__DIR__, 3). '\storage\shops\\' . $fileName);
+
+        MessageAuth::launchMessage('success', 'Shop successfully registered!');
+    }
+
+    protected function registerCollection(int $owner, string $name, string $about, array $banner): void
+    {
+        $verifyName = AuthenticatorNFT::verifyName($name);
+        $verifyBanner = AuthenticatorNFT::verifyImage($banner);
+
+        if($verifyName === false || $verifyBanner === false) return;
+
+        $fileName = RenameFiles::renameImage( (string) $name, (string) $banner['name'] );
+
+        $insert = QueryInserter::schemaSetCollection( (int) $owner, (string) $name, (string) $about, (string) $fileName );
+        
+        if(!empty($insert)){
+            MessageAuth::launchMessage('error', 'Invalid data!');
+            return;
+        }
+
+        move_uploaded_file($banner['tmp_name'], dirname(__DIR__, 3). '\storage\collections\\' . $fileName);
 
         MessageAuth::launchMessage('success', 'Shop successfully registered!');
     }

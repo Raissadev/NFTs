@@ -16,6 +16,7 @@ $Router->post("/download-file", "$Controllers\ClientController", "downloadFile")
 //Dashboard
 $Router->post("/dashboard/register-nft", "$Controllers\VendorController", "storeRegisterNFT");
 $Router->post("/dashboard/register-shop", "$Controllers\VendorController", "storeShopVendor");
+$Router->post("/dashboard/register-collection", "$Controllers\VendorController", "storeCollectionVendor");
 
 /* Methods Puts */
 $Router->put("/dashboard/profile", "$Controllers\VendorController", "storeUpdateProfile");
@@ -32,6 +33,7 @@ $Router->get("/dashboard/register-nft", "$Controllers\VendorController", "regist
 $Router->get("/dashboard/my-nfts", "$Controllers\VendorController", "myNFTs");
 $Router->get("/dashboard/my-nft/?id=", "$Controllers\VendorController", "myNFT");
 $Router->get("/dashboard/register-shop", "$Controllers\VendorController", "registerShopVendor");
+$Router->get("/dashboard/register-collection", "$Controllers\VendorController", "registerCollectionVendor");
 $Router->get("/dashboard", "$Controllers\VendorController", "dashboard");
 //Pages Defaults
 $Router->get("/home", "$Controllers\Controller", "index");
