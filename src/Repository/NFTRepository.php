@@ -43,7 +43,7 @@ class NFTRepository
 
     public static function schemaFetchClientNFTs(int $user): array
     {
-        $fetch = ConnectionFactory::connect()->prepare("SELECT * FROM nfts JOIN nfts_purchases ON nfts.id = nfts_purchases.nft WHERE nfts.owner = $user");
+        $fetch = ConnectionFactory::connect()->prepare("SELECT * FROM nfts INNER JOIN nfts_purchases ON nfts_purchases.nft = nfts.id WHERE nfts_purchases.owner = $user");
         $fetch->execute();
         $response = $fetch->fetchAll(\PDO::FETCH_ASSOC);
         return $response;

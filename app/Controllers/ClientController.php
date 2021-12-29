@@ -22,7 +22,8 @@ class ClientController
     {
         $user = (new Market)->getOwner($_SESSION['id']);
         $blockchain = User::getMyBlockchain($_SESSION['id']);
-        MainView::render('profile', [ 'isUser' => $this->funcsUser, 'user' => $user, 'blockchain' => $blockchain ]);
+        $nftsClient = (new NFT)->getListNFT( (int) $_SESSION['id'] );
+        MainView::render('profile', [ 'isUser' => $this->funcsUser, 'user' => $user, 'blockchain' => $blockchain, 'nftsClient' => $nftsClient ]);
     }
 
     public function storeUpdateProfile(): void

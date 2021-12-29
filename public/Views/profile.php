@@ -2,7 +2,7 @@
 
 <div class="divisor"></div>
 
-<section class="container-form h75vh items-flex align-center just-center">
+<section class="container-form mr-top-small items-flex align-center just-center">
     <div class="wrap w80 w90-dv-small">
         <form method="POST" action="/profile" enctype="multipart/form-data" class="form-profile items-flex flex-wrap just-space-between">
             <div class="w50 w100-dv-small">    
@@ -25,6 +25,22 @@
                 <button type="submit" name="register-blockchain-client" class="w15 button-black w100-dv-small">Update</button>
             </div>
         </form>
+    </div>
+</section>
+
+
+<section class="container-collections mr-top-bigger">
+    <div class="wrap w80 center">
+        <div class="title mr-bottom-default">
+            <h2 class="font-size-default">Your NFTs</h2>
+        </div>
+        <div class="list-nfts items-flex flex-wrap">
+           <?php
+                foreach($params['nftsClient'] as $nft){
+                    include 'components/box-list-nft.php';
+                }
+           ?>
+        </div>
     </div>
 </section>
 

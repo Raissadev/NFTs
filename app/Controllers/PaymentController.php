@@ -13,7 +13,7 @@ class PaymentController extends Blockchain
     {
         $newBuy = (new Blockchain)->makePayment($_POST['guid'], $_POST['password'], $_POST['to'], $_POST['amount']);
         
-        if($newBuy && isset($_POST['nft-identifier'])){
+        if(!$newBuy && isset($_POST['nft-identifier'])){
             (new NFT)->addListNFT( (int) $_SESSION['id'], (int) $_POST['nft-identifier'] );
             header('Location: '.BASE_URL.'/my-nfts');
         }
