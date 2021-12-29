@@ -16,6 +16,15 @@ class UserRepository
         return $launch;
     }
 
+    public static function schemaGetAllEmails(string $email)
+    {
+        $email = ConnectionFactory::connect()->prepare("SELECT (email) FROM users WHERE email = '$email'");
+        $email->execute();
+        $launch = $email->fetch(\PDO::FETCH_ASSOC);
+        if($launch) return true;
+        return false;
+    }
+
     protected static function schemaFetchBlockchain(int $user): array
     {
         $blockchain = ConnectionFactory::connect()->prepare("SELECT (blockchain), (blockchain_password) FROM users WHERE id = $user");

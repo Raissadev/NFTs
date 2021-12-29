@@ -6,10 +6,10 @@ use App\Services\ConnectionFactory;
 class QueryInserter
 {
 
-    protected static function schemaSetUser(array $params): string
+    protected static function schemaSetUser(string $name, string $email, string $password, string $image, string $type): string
     {
         $insert = ConnectionFactory::connect()->prepare("INSERT INTO users (name, email, password, image, type_user) VALUES (?,?,?,?,?)");
-        $insert->execute( $params );
+        $insert->execute([ $name, $email, $password, $image, $type ]);
         $id = ConnectionFactory::connect()->lastInsertId();
         return $id;
     }

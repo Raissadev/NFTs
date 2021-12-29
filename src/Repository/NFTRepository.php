@@ -49,6 +49,15 @@ class NFTRepository
         return $response;
     }
 
+    public static function schemaGetAllNamesNFTs(string $name)
+    {
+        $name = ConnectionFactory::connect()->prepare("SELECT (name) FROM nfts WHERE name = '$name'");
+        $name->execute();
+        $launch = $name->fetch(\PDO::FETCH_ASSOC);
+        if($launch) return true;
+        return false;
+    }
+
 }
 
 

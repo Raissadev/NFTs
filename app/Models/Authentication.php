@@ -7,6 +7,7 @@ use App\Services\QuerysDatabase\QueryInserter;
 use Src\Helpers\MessageAuth;
 use Src\Middlewares\RenameFiles;
 use Src\Middlewares\AuthenticatorMiddleware;
+use Src\Middlewares\ExistenceVerifier;
 
 class Authentication extends QueryInserter
 {
@@ -37,8 +38,9 @@ class Authentication extends QueryInserter
         $verifyEmail = AuthenticatorMiddleware::verifyEmail($email);
         $verifyPassword = AuthenticatorMiddleware::verifyPassword($password);
         $verifyImage = AuthenticatorMiddleware::verifyImage($image);
+        $verifyExistence = ExistenceVerifier::emailExists($email);
 
-        if($verifyEmail === false || $verifyEmail === false || $verifyPassword === false || $verifyImage === false) return;
+        if($verifyExistence === true || $verifyEmail === false || $verifyEmail === false || $verifyPassword === false || $verifyImage === false) return;
 
         $fileName = RenameFiles::renameImage( (string) $name, (string) $image['name'] );
 

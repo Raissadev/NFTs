@@ -9,6 +9,7 @@ use Src\Repository\ShopVendorRepository;
 use Src\Helpers\MessageAuth;
 use App\Models\API\BlockchainRequest;
 use Src\Middlewares\AuthenticatorNFT;
+use Src\Middlewares\ExistenceVerifier;
 use Src\Middlewares\RenameFiles;
 
 class UserVendor extends QueryInserter
@@ -37,8 +38,9 @@ class UserVendor extends QueryInserter
         $verifyName = AuthenticatorNFT::verifyName($name);
         $verifyImage = AuthenticatorNFT::verifyImage($image);
         $verifyPrice = AuthenticatorNFT::verifyPrice($price);
+        $verifyExistence = ExistenceVerifier::nameNFTExists($name);
 
-        if($verifyName === false || $verifyImage === false || $verifyPrice === false) return;
+        if($verifyExistence === true || $verifyName === false || $verifyImage === false || $verifyPrice === false) return;
 
         $priceConvert = str_replace(array('.', ','), '', $price);
         $fileName = RenameFiles::renameImage( (string) $name, (string) $image['name'] );
