@@ -21,7 +21,7 @@
             <h2 class="font-size-default">NFTs <?= $params['collection']['name'] ?> 🔥</h2>
         </div>
         <div class="list-nfts items-flex flex-wrap">
-        <?php
+            <?php
                 foreach($params['nfts'] as $nft){
                     foreach($params['owners'] as $owner){
                         if($nft['owner'] === $owner['id']) include 'components/box-nft-simple.php';

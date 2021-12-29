@@ -40,7 +40,8 @@ class MarketController extends Market
     {
         $nft = (new Market)->getNFT($_GET['id']);
         $owner = (new Market)->getOwner($nft['owner']);
-        MainView::render('nft-vendor', [ "isUser" => $this->funcsUser, 'nft' => $nft, 'owner' => $owner, 'blockchain' => $this->userBlockchain ]);
+        $collection = (new Market)->getCollection("WHERE id = $nft[collection]");
+        MainView::render('nft-vendor', [ "isUser" => $this->funcsUser, 'nft' => $nft, 'owner' => $owner, 'blockchain' => $this->userBlockchain, 'collection' => $collection ]);
     }
 
     public function globalNFT(): void
