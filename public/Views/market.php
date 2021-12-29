@@ -20,10 +20,14 @@
         </div>
         <div class="items-flex flex-wrap w100 mr-bottom-small">
             <a class="button rounded-edge"> <input type="checkbox" onclick="check(this, event)" name="crypto_type" checked value="" data-check /> All </a>
+            <a class="button rounded-edge"> <input type="checkbox" onclick="check(this, event)" name="crypto_type" value="BTC" data-check /> Bitcoin </a>
+        </div>
+        <div class="items-flex flex-wrap w100 mr-bottom-small">
+            <a class="button rounded-edge"> <input type="checkbox" onclick="check(this, event)" name="collection" checked value="1" data-check /> All </a>
             <?php
-                foreach($params['filter'] as $nft){
+                foreach($params['collections'] as $collection){
             ?>
-            <a class="button rounded-edge"> <input type="checkbox" onclick="check(this, event)" name="crypto_type" value="<?= $nft['crypto_type'] ?>" data-check /> <?= $nft['crypto_type'] ?> </a>
+            <a class="button rounded-edge button-default"> <input type="checkbox" onclick="check(this, event)" name="collection" value="<?= $collection['id'] ?>" /> <?= $collection['name'] ?> </a>
             <?php } ?>
         </div>
         <button type="submit" name="search-nft" id="search" class="button-black w100 mr-right-tiny">Search</button>

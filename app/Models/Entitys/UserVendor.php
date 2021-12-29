@@ -42,11 +42,13 @@ class UserVendor extends QueryInserter
 
         if($verifyExistence === true || $verifyName === false || $verifyImage === false || $verifyPrice === false) return;
 
+        $token = md5($name);
+
         $priceConvert = str_replace(array('.', ','), '', $price);
         $fileName = RenameFiles::renameImage( (string) $name, (string) $image['name'] );
 
         $crypto = (new BlockchainRequest)->exchangeRates($currency, (string) $priceConvert);
-        $insert = QueryInserter::schemaSetNFT( (int) $owner, (int) $shop, (string) $name, (string) $description, (string) $blockchain, (string) $fileName, (string) $price, (string) $currency, (int) $crypto, (string) $cryptoType, (int) $collection );
+        $insert = QueryInserter::schemaSetNFT( (int) $owner, (int) $shop, (string) $name, (string) $description, (string) $blockchain, (string) $fileName, (string) $price, (string) $currency, (int) $crypto, (string) $cryptoType, (int) $collection, (string) $token );
         
         if(!empty($insert)){
             MessageAuth::launchMessage('error', 'Invalid data!');
@@ -59,11 +61,11 @@ class UserVendor extends QueryInserter
         header('Refresh');
     }
 
-    protected function updateNFT(int $nft, int $owner, int $shop, string $name, string $description, string $blockchain, string $price, string $currency, string $cryptoType): void
+    protected function updateNFT(int $nft, int $owner, int $shop, string $name, string $description, string $blockchain, string $price, string $currency, string $cryptoType, int $collection): void
     {
         $priceConvert = str_replace(array('.', ','), '', $price);
         $crypto = (new BlockchainRequest)->exchangeRates($currency, (string) $priceConvert);
-        $update = QuerySeter::schemaUpdateNFT( (int) $nft, (int) $owner, (int) $shop, (string) $name, (string) $description, (string) $blockchain, (string) $price, (string) $currency, (int) $crypto, (string) $cryptoType );
+        $update = QuerySeter::schemaUpdateNFT( (int) $nft, (int) $owner, (int) $shop, (string) $name, (string) $description, (string) $blockchain, (string) $price, (string) $currency, (int) $crypto, (string) $cryptoType, (int) $collection );
         
         if(!empty($update)){
             MessageAuth::launchMessage('error', 'Invalid data!');

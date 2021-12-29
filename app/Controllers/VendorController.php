@@ -85,9 +85,10 @@ class VendorController extends UserVendor
 
     public function myNFT(): void
     {
+        $collections = (new Market)->getAllCollections();
         $nft = (new UserVendor)->getMyNFT($_GET['id'], $_SESSION['id']);
         $shops = (new UserVendor)->getShops($_SESSION['id']);
-        MainView::dashboard('my-nft', [ 'lastNFTs' => $this->lastNFTs, 'owners' => $this->owners, 'nft' => $nft, 'shops' => $shops ]);
+        MainView::dashboard('my-nft', [ 'lastNFTs' => $this->lastNFTs, 'owners' => $this->owners, 'nft' => $nft, 'shops' => $shops, 'collections' => $collections ]);
     }
 
 
@@ -98,7 +99,7 @@ class VendorController extends UserVendor
 
     public function storeUpdateNFT(): void
     {
-        (new UserVendor)->updateNFT($_GET['id'], $_SESSION['id'], $_POST['shop'], $_POST['name'], $_POST['description'], $_POST['blockchain'], $_POST['price'], $_POST['currency'], $_POST['crypto_type']);
+        (new UserVendor)->updateNFT($_GET['id'], $_SESSION['id'], $_POST['shop'], $_POST['name'], $_POST['description'], $_POST['blockchain'], $_POST['price'], $_POST['currency'], $_POST['crypto_type'], $_POST['collection']);
     }
 
     public function storeUpdateProfile(): void

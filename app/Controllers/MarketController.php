@@ -20,11 +20,12 @@ class MarketController extends Market
 
     public function shop(): void
     {
+        $collections = (new Market)->getAllCollections();
         $owners = (new Market)->getAllUsers("");
         $filter = (new Market)->fetchNft("");
         $shops = (new Market)->getAllShops("");
-        $nfts = (new Market)->fetchNft( isset($_GET['search-nft']) ? "WHERE shop = '$_GET[shop]' AND name LIKE '$_GET[search]%' OR description LIKE '$_GET[search]%' AND crypto_type = '$_GET[crypto_type]' AND price BETWEEN '$_GET[price_min]' AND '$_GET[price_max]'" : '' );
-        MainView::render('market', [ "isUser" => $this->funcsUser, 'nfts' => $nfts, 'owners' => $owners, 'filter' => $filter, 'shops' => $shops ]);
+        $nfts = (new Market)->fetchNft( isset($_GET['search-nft']) ? "WHERE shop = '$_GET[shop]' AND name LIKE '$_GET[search]%' OR description LIKE '$_GET[search]%' AND crypto_type = '$_GET[crypto_type]' AND price BETWEEN '$_GET[price_min]' AND '$_GET[price_max]' AND collection = $_GET[collection]" : '' );
+        MainView::render('market', [ "isUser" => $this->funcsUser, 'nfts' => $nfts, 'owners' => $owners, 'filter' => $filter, 'shops' => $shops, 'collections' => $collections ]);
     }
 
     public function shopVendor(): void
