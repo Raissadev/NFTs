@@ -6,6 +6,7 @@ use App\Services\QuerysDatabase\QuerySeter;
 use App\Services\QuerysDatabase\QueryInserter;
 use Src\Repository\NFTRepository;
 use Src\Repository\ShopVendorRepository;
+use Src\Repository\CollectionsRepository;
 use Src\Helpers\MessageAuth;
 use App\Models\API\BlockchainRequest;
 use Src\Middlewares\AuthenticatorNFT;
@@ -33,14 +34,14 @@ class UserVendor extends QueryInserter
         return $response;
     }
 
-    protected function newNFT(int $owner, int $shop, string $name, string $description, string $blockchain, array $image, string $price, string $currency, string $cryptoType, int $collection): void
+    protected function newNFT(int $owner, int $shop, string $name, string $description, string $blockchain, array $image, string $price, string $currency, string $cryptoType, int $collection): string
     {
         $verifyName = AuthenticatorNFT::verifyName($name);
         $verifyImage = AuthenticatorNFT::verifyImage($image);
         $verifyPrice = AuthenticatorNFT::verifyPrice($price);
         $verifyExistence = ExistenceVerifier::nameNFTExists($name);
 
-        if($verifyExistence === true || $verifyName === false || $verifyImage === false || $verifyPrice === false) return;
+        if($verifyExistence === true || $verifyName === false || $verifyImage === false || $verifyPrice === false) return false;
 
         $token = md5($name);
 
@@ -50,15 +51,15 @@ class UserVendor extends QueryInserter
         $crypto = (new BlockchainRequest)->exchangeRates($currency, (string) $priceConvert);
         $insert = QueryInserter::schemaSetNFT( (int) $owner, (int) $shop, (string) $name, (string) $description, (string) $blockchain, (string) $fileName, (string) $price, (string) $currency, (int) $crypto, (string) $cryptoType, (int) $collection, (string) $token );
         
-        if(!empty($insert)){
+        if(!$insert){
             MessageAuth::launchMessage('error', 'Invalid data!');
-            return;
+            return false;
         }
 
         move_uploaded_file($image['tmp_name'], dirname(__DIR__, 3). '\storage\nfts\\' . $fileName);
-
         MessageAuth::launchMessage('success', 'NFT successfully registered!');
-        header('Refresh');
+        
+        return $insert;
     }
 
     protected function updateNFT(int $nft, int $owner, int $shop, string $name, string $description, string $blockchain, string $price, string $currency, string $cryptoType, int $collection): void
@@ -108,14 +109,19 @@ class UserVendor extends QueryInserter
 
         $insert = QueryInserter::schemaSetCollection( (int) $owner, (string) $name, (string) $about, (string) $fileName );
         
-        if(!empty($insert)){
+        if(!$insert){
             MessageAuth::launchMessage('error', 'Invalid data!');
             return;
         }
 
         move_uploaded_file($banner['tmp_name'], dirname(__DIR__, 3). '\storage\collections\\' . $fileName);
-
         MessageAuth::launchMessage('success', 'Shop successfully registered!');
+    }
+
+    protected function updateCollection(int $collection, int $owner, int $nft): void
+    {
+        $collection = CollectionsRepository::schemaGetCollection("WHERE id = $collection");
+        QuerySeter::schemaUpdateCollection( (int) $collection, (string) $owner.','.$collection['owners'], (string) $nft.','.$collection['nfts'] );
     }
 
     public function setType(int $user, string $type): void

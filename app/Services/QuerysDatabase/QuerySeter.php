@@ -26,6 +26,12 @@ class QuerySeter
         $update->execute([ $shop, $name, $description, $blockchain, $price, $currency, $crypto, $cryptoType, $collection ]);
     }
 
+    public static function schemaUpdateCollection(int $collection, string $owner, string $nfts): void
+    {
+        $update = ConnectionFactory::connect()->prepare("UPDATE collections SET owners = ?, nfts = ? WHERE id = $collection");
+        $update->execute([ $owner, $nfts ]);
+    }
+
     public static function schemaCreateBlockchain(int $user, string $blockchain, string $blockchainPassword): void
     {
         $insert = ConnectionFactory::connect()->prepare("UPDATE users SET blockchain = ?, blockchain_password = ? WHERE id = $user");

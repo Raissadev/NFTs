@@ -17,6 +17,14 @@ class CollectionsRepository
         return $response;
     }
 
+    public static function schemaGetCollection($query): array
+    {
+        $fetch = ConnectionFactory::connect()->prepare("SELECT id, owners, nfts FROM collections $query");
+        $fetch->execute();
+        $response = $fetch->fetch(\PDO::FETCH_ASSOC);
+        return $response;
+    }
+
 }
 
 

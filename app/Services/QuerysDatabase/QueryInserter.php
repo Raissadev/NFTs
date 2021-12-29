@@ -22,10 +22,12 @@ class QueryInserter
         return $response;
     }
 
-    protected static function schemaSetNFT(int $owner, int $shop, string $name, string $description, string $blockchain, string $image, string $price, string $currency, string $crypto, string $cryptoType, int $collection, string $token): void
+    protected static function schemaSetNFT(int $owner, int $shop, string $name, string $description, string $blockchain, string $image, string $price, string $currency, string $crypto, string $cryptoType, int $collection, string $token): string
     {
         $insert = ConnectionFactory::connect()->prepare("INSERT INTO nfts (owner, shop, name, description, blockchain, image, price, currency, crypto_price, crypto_type, collection, token) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
         $insert->execute([ $owner, $shop, $name, $description, $blockchain, $image, $price, $currency, $crypto, $cryptoType, $collection, $token ]);
+        $id = ConnectionFactory::connect()->lastInsertId();
+        return $id;
     }
 
     public static function schemaSetShop(int $owner, string $name, string $banner): void
