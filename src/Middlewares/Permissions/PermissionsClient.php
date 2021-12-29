@@ -14,16 +14,10 @@ final class PermissionsClient
         $uri = [
             "dashboard",
             "register-nft",
-            // "my-nfts",
-            // "my-nft",
             "register-shop"
         ];
 
-        $currentUri = preg_split('/\//', $_SERVER['REQUEST_URI']);
-        if(in_array($currentUri[1], $uri)) {
-            die('You do not have permission');
-        }
-
+        $uri = PermissionsURL::uriNotPermission($uri);
         return $uri;
     }
 }

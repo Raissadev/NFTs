@@ -15,7 +15,7 @@
                 <div class="text-infos mr-top-small mr-bottom-default">
                     <h1 class="font-title mr-bottom-small"><?= $params['nft']['name'] ?></h1>
                     <h5 class="mr-bottom-small"><?= $params['nft']['description'] ?></h5>
-                    <p>Currency <?= $params['nft']['currency'] ?></p>
+                    <p>Currency <?= $params['nft']['currency'] ?> | Create At <?= substr($params['nft']['created_at'], 0, -10) ?></p>
                 </div>
                 <div class="items-flex align-center mr-bottom-bigger">
                     <figure class="img-user-small mr-right-tiny">

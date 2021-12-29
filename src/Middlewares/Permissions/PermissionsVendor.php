@@ -2,6 +2,8 @@
 
 namespace Src\Middlewares\Permissions;
 
+use Src\Middlewares\Permissions\PermissionsURL;
+
 final class PermissionsVendor
 {
     public function __construct()
@@ -15,11 +17,7 @@ final class PermissionsVendor
             "profile"
         ];
 
-        $currentUri = preg_split('/\//', $_SERVER['REQUEST_URI']);
-        if(in_array($currentUri[1], $uri)) {
-            die('You do not have permission');
-        }
-
+        $uri = PermissionsURL::uriNotPermission($uri);
         return $uri;
     }
 }
