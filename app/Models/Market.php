@@ -42,9 +42,9 @@ class Market extends NFTRepository
         return $response;
     }
 
-    public function getAllShops($query): array
+    public function getAllShops(string $query): array
     {
-        $fetch = ShopVendorRepository::schemaGetAllShops($query);
+        $fetch = ShopVendorRepository::schemaGetAllShops( (string) $query );
         return $fetch;
     }
 
@@ -52,6 +52,12 @@ class Market extends NFTRepository
     {
         $fetch = CollectionsRepository::schemaFetchCollections();
         return $fetch;
+    }
+
+    public function getCollection(string $query): array
+    {
+        $reponse = CollectionsRepository::schemaGetCollection( (string) $query );
+        return $reponse;
     }
 
     

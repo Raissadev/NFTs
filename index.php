@@ -41,6 +41,8 @@ $Router->get("/sign-in", "$Controllers\AuthenticationController", "signIn");
 $Router->get("/sign-up", "$Controllers\AuthenticationController", "signUp");
 $Router->get("/profile", "$Controllers\ClientController", "profile");
 $Router->get("/market", "$Controllers\MarketController", "shop");
+$Router->get("/collections", "$Controllers\MarketController", "collections");
+$Router->get("/collection/?id=", "$Controllers\MarketController", "collection");
 $Router->get("/shop-vendor/?id=", "$Controllers\MarketController", "shopVendor");
 $Router->get("/nft/?id=", "$Controllers\MarketController", "nft");
 $Router->get("/global-nft/?id=", "$Controllers\MarketController", "globalNFT");

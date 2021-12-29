@@ -198,6 +198,11 @@ section.container-form  form.form-profile input, section.container-form  form.fo
     background-color: var(--black);
 }
 
+/* Collections */
+section.container-list-collections ul li.box-user{
+    width: 18%;
+    margin: 0 1%;
+}
 
 
 @media screen and (max-width: 800px){

@@ -13,8 +13,9 @@ define('BASE_STORAGE_USERS','http://localhost:8000/storage/users');
 define('BASE_STORAGE_IMAGES','http://localhost:8000/storage/images');
 define('BASE_STORAGE_NFTS' ,'http://localhost:8000/storage/nfts');
 define('BASE_STORAGE_SHOPS' ,'http://localhost:8000/storage/shops');
+define('BASE_STORAGE_COLLECTIONS' ,'http://localhost:8000/storage/collections');
 //Dashboard
-define('BASE_DASHBOARD' ,'http://localhost:3000/dashboard');
+define('BASE_DASHBOARD' ,'http://localhost:8000/dashboard');
 
 
 ?>

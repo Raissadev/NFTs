@@ -19,11 +19,13 @@
             </div>
         </div>
         <div class="items-flex flex-wrap w100 mr-bottom-small">
-            <a> <input type="checkbox" id="crypto_type-all" name="crypto_type" checked value="" data-check /> <label for="crypto_type-all" class="button rounded-edge"> All </label> </a>
-            <a> <input type="checkbox" id="crypto_type-BTC" name="crypto_type" value="BTC" data-check /> <label for="crypto_type-BTC" class="button rounded-edge"> Bitcoin </label> </a>
+            <h6 class="w100 mr-bottom-tiny">Cryptos</h6>
+            <a> <input type="checkbox" id="crypto_type-all" name="crypto_type" checked value="" data-check /> <label for="crypto_type-all" class="button rounded-edge button-default"> All </label> </a>
+            <a> <input type="checkbox" id="crypto_type-BTC" name="crypto_type" value="BTC" data-check /> <label for="crypto_type-BTC" class="button rounded-edge button-default"> Bitcoin </label> </a>
         </div>
         <div class="items-flex flex-wrap w100 mr-bottom-small">
-            <a> <input type="checkbox" name="collection" id="collection-1" checked value="1" data-check /> <label for="collection-1" class="button rounded-edge"> All </label> </a>
+            <h6 class="w100 mr-bottom-tiny">Collections</h6>
+            <a> <input type="checkbox" name="collection" id="collection-1" checked value="1" data-check /> <label for="collection-1" class="button rounded-edge button-default"> All </label> </a>
             <?php
                 foreach($params['collections'] as $collection){
             ?>

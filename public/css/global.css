@@ -392,6 +392,13 @@ figure.img-default-nft img{
     height: 30vh;
     border-radius:30px 0 30px 0;
 }
+figure.banner-collection-bigger{
+    background-image: url('../../storage/images/banner.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 30px;
+    padding:4.5rem 2rem;
+}
 /* Details */
 .box, .box-nft{
     background-color: var(--black-weak);
