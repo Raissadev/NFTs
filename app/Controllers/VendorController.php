@@ -10,6 +10,8 @@ use App\Models\API\Blockchain;
 use App\Models\API\BlockchainRequest;
 use App\Models\API\BlockchainMetrics;
 
+use App\Models\NFT;
+
 class VendorController extends UserVendor
 {
 
