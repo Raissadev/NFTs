@@ -38,7 +38,7 @@ class QueryInserter
 
     public static function schemaSetCollection(int $owner, string $name, string $about, string $banner): void
     {
-        $insert = ConnectionFactory::connect()->prepare("INSERT INTO collections (owner, name, about, banner) VALUES (?,?,?,?)");
+        $insert = ConnectionFactory::connect()->prepare("INSERT INTO collections (owners, name, about, banner) VALUES (?,?,?,?)");
         $insert->execute([ $owner, $name, $about, $banner ]);
     }
 

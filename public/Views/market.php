@@ -19,15 +19,18 @@
             </div>
         </div>
         <div class="items-flex flex-wrap w100 mr-bottom-small">
-            <a class="button rounded-edge"> <input type="checkbox" onclick="check(this, event)" name="crypto_type" checked value="" data-check /> All </a>
-            <a class="button rounded-edge"> <input type="checkbox" onclick="check(this, event)" name="crypto_type" value="BTC" data-check /> Bitcoin </a>
+            <a> <input type="checkbox" id="crypto_type-all" name="crypto_type" checked value="" data-check /> <label for="crypto_type-all" class="button rounded-edge"> All </label> </a>
+            <a> <input type="checkbox" id="crypto_type-BTC" name="crypto_type" value="BTC" data-check /> <label for="crypto_type-BTC" class="button rounded-edge"> Bitcoin </label> </a>
         </div>
         <div class="items-flex flex-wrap w100 mr-bottom-small">
-            <a class="button rounded-edge"> <input type="checkbox" onclick="check(this, event)" name="collection" checked value="1" data-check /> All </a>
+            <a> <input type="checkbox" name="collection" id="collection-1" checked value="1" data-check /> <label for="collection-1" class="button rounded-edge"> All </label> </a>
             <?php
                 foreach($params['collections'] as $collection){
             ?>
-            <a class="button rounded-edge button-default"> <input type="checkbox" onclick="check(this, event)" name="collection" value="<?= $collection['id'] ?>" /> <?= $collection['name'] ?> </a>
+            <a> 
+                <input type="checkbox" name="collection" id="collection-<?= $collection['id'] ?>" value="<?= $collection['id'] ?>" /> 
+                <label class="button rounded-edge button-default" for="collection-<?= $collection['id'] ?>"><?= $collection['name'] ?> </label>
+            </a>
             <?php } ?>
         </div>
         <button type="submit" name="search-nft" id="search" class="button-black w100 mr-right-tiny">Search</button>
@@ -49,5 +52,3 @@
 </section>
 
 </section>
-
-<script src="<?= BASE_PATH ?>/js/search.js"></script>

@@ -121,19 +121,18 @@ aside.container-search form a{
     position: relative;
     min-width: 30%;
     margin: 0 1.5% 3% 0;
-    background: var(--black);
 }
 aside.container-search form input, aside.container-search form select{
    background-color: var(--black);
 }
 aside.container-search form input[type=checkbox]{
-    position: absolute;
-    left:0;
-    top:0;
-    width:100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
+    display: none;
+}
+aside.container-search form input[type=checkbox]:not(:checked) ~ label{
+    background: var(--black) !important;
+}
+aside.container-search form input[type=checkbox]:checked ~ label{
+    background: var(--purple) !important;
 }
 section.container-shop .box{
     min-width: 30%;

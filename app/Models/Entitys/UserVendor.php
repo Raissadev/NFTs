@@ -108,12 +108,7 @@ class UserVendor extends QueryInserter
         $fileName = RenameFiles::renameImage( (string) $name, (string) $banner['name'] );
 
         $insert = QueryInserter::schemaSetCollection( (int) $owner, (string) $name, (string) $about, (string) $fileName );
-        
-        if(!$insert){
-            MessageAuth::launchMessage('error', 'Invalid data!');
-            return;
-        }
-
+    
         move_uploaded_file($banner['tmp_name'], dirname(__DIR__, 3). '\storage\collections\\' . $fileName);
         MessageAuth::launchMessage('success', 'Shop successfully registered!');
     }
