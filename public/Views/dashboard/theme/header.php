@@ -45,7 +45,7 @@
             <a class="button w15 mr-right-default hide-dv-small"><i class="ri-coin-fill mr-right-tiny"></i> <?= isset($params['blockchainWallet']->balance) ? $params['blockchainWallet']->balance : '0 BTC' ?></a>
             <div class="items-flex align-center">
                 <a><i class="ri-message-3-fill"></i></a>
-                <a href="<?= BASE_DASHBOARD ?>/register-collection" class="mr-side-small"><i class="ri-notification-3-fill"></i></a>
+                <a href="<?= BASE_DASHBOARD ?>/register-collection" class="mr-side-small"><i class="ri-add-fill"></i></a>
                 <a class="toggle hide-dv-bigger mr-right-small"><i class="ri-menu-3-line"></i></a>
                 <figure class="img-user-small items-flex align-center">
                     <img src="<?= BASE_STORAGE_USERS ?>/<?= $_SESSION['image'] ?>" />

@@ -129,6 +129,8 @@ class UserVendor extends QueryInserter
 
         $update = QuerySeter::schemaUpdateType( (int) $user );
         $_SESSION['type_user'] = $type;
+
+        header('Location: '.BASE_URL.'/dashboard');
     }
 
 }

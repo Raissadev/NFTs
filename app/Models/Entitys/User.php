@@ -84,7 +84,7 @@ class User extends UserRepository
         if($_SESSION['type_user'] === "vendor"){
             $buttons[] = [ "Text" => "Dasboard", "Link" => "/dashboard", "TypeUser" => "Create NFT", "TypeLink" => "/dashboard/register-nft" ];
         }elseif($_SESSION['type_user'] === "client"){
-            $buttons[] = [ "Text" => "Profile", "Link" => "/profile", "TypeUser" => "Become Vendor", "TypeLink" => "/become-vendor?type=vendor" ];
+            $buttons[] = [ "Text" => "Profile", "Link" => "/profile", "TypeUser" => "Become Vendor", "TypeLink" => "/become-vendor?type_user=vendor" ];
         }
 
         return $buttons['0'];
