@@ -14,7 +14,7 @@ class Blockchain
 
     public function __construct()
     {
-        $this->api = "39421209-b0fc-47e5-acf9-e7e553d8b152";
+        $this->api = "****************";
         $this->base = "http://127.0.0.1:3000";
     }
 
