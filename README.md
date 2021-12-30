@@ -21,6 +21,7 @@ Pessoal, não vou mentir... Isso são só alguns detalhes da aplicação, por tr
 </ul>
 
 
+
 <p>Observação: Use o comando "blockchain-wallet-service start --port 3000" para rodar o blockchain!</p>
 
 <hr />
