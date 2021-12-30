@@ -1,6 +1,6 @@
 # NFTs
 <h3>Sobre o Projeto</h3>
-<p>Fala Devs!</p>
+<p>Fala Devs! Estou trazendo aqui uma plataforma de Markteplace de NFT's, essa aplicação possui o intuito de facilitar a compra de NFT's (artes digitais) com cryptomoedas. Mas como? Vou explicar! Para a criação da wallet é utilizada a própria API do blockchain, então na própria plataforma o usuário poderá criar a sua wallet. Ao realizar a compra de uma NFT, ele terá acesso a ela em sua página de perfil.  </p>
 
 <ul>
   <li>Lenguages:</li>
