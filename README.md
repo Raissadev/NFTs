@@ -22,6 +22,12 @@ Pessoal, não vou mentir... Isso são só alguns detalhes da aplicação, por tr
 
 
 
+https://user-images.githubusercontent.com/82960240/147714009-e21cc02d-099e-4921-ab6d-e8e0e377384c.mp4
+
+https://user-images.githubusercontent.com/82960240/147714114-121be9c3-72d4-45ec-bf76-75cca8e39028.mp4
+
+
+
 <p>Observação: Use o comando "blockchain-wallet-service start --port 3000" para rodar o blockchain!</p>
 
 <hr />
