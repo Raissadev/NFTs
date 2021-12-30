@@ -27,7 +27,7 @@ class VendorController extends UserVendor
     public function dashboard(): void
     {
         $blockchainUser = User::getMyBlockchain($_SESSION['id']);
-        $blockchainWallet = (new Blockchain)->balanceWallet( /* $blockchainUser['blockchain'], $blockchainUser['blockchain_password'] */ "", "" );
+        $blockchainWallet = (new Blockchain)->balanceWallet($blockchainUser['blockchain'], $blockchainUser['blockchain_password']);
         $nfts = (new UserVendor)->getMyNFTs($_SESSION['id']);
         MainView::dashboard('dashboard', [ 'nfts' => $nfts, 'lastNFTs' => $this->lastNFTs, 'owners' => $this->owners, 'blockchainWallet' => $blockchainWallet ]);
     }
