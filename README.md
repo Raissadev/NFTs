@@ -26,6 +26,11 @@ https://user-images.githubusercontent.com/82960240/147714009-e21cc02d-099e-4921-
 
 https://user-images.githubusercontent.com/82960240/147714114-121be9c3-72d4-45ec-bf76-75cca8e39028.mp4
 
+https://user-images.githubusercontent.com/82960240/147714251-6ef2cd48-f0a4-4e9c-949a-35d1a1098b72.mp4
+
+https://user-images.githubusercontent.com/82960240/147714315-020020d6-2d5f-42f9-a16b-13f61baa6c9f.mp4
+
+https://user-images.githubusercontent.com/82960240/147714387-ed5b7bb1-1711-416e-90dd-40bc5ff17c7c.mp4
 
 
 <p>Observação: Use o comando "blockchain-wallet-service start --port 3000" para rodar o blockchain!</p>
