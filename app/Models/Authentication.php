@@ -15,7 +15,7 @@ class Authentication extends QueryInserter
     protected function authSignIn(string $email, string $password): void
     {
         $verifyEmail = AuthenticatorMiddleware::verifyEmail($email);
-        $verifyPassword = true /* AuthenticatorMiddleware::verifyPassword($password) */;
+        $verifyPassword = AuthenticatorMiddleware::verifyPassword($password);
 
         if($verifyEmail === false || $verifyPassword === false) return;
 

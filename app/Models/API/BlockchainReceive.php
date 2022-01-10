@@ -36,7 +36,7 @@ class BlockchainReceive extends Blockchain
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($this->data));
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ["X-API-Token: 39421209-b0fc-47e5-acf9-e7e553d8b152", "accept: application/json", "Content-Type: application/json"]);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ["X-API-Token: ****************", "accept: application/json", "Content-Type: application/json"]);
 
         $response = json_decode(curl_exec($ch));
         curl_close($ch);
