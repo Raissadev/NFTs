@@ -33,7 +33,7 @@ https://user-images.githubusercontent.com/82960240/147763120-4e9357a0-58b0-4d36-
 
 
 
-<p>Observação: Use o comando "blockchain-wallet-service start --port 3000" para rodar o blockchain!</p>
+<p>Observação: Use o comando "blockchain-wallet-service start --port 3000" para rodar o blockchain! E não esqueça de colocar a chave da sua API.</p>
 
 <hr />
 <h3>Autor</h3>
