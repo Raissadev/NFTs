@@ -60,13 +60,20 @@ class BlockchainRequest extends Blockchain
 
     public function request()
     {
-        $ch = curl_init($this->base . $this->endpoint);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER,  true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ["accept: application/json","X-API-Token: 39421209-b0fc-47e5-acf9-e7e553d8b152"]);
-        $response = json_decode(curl_exec($ch));
-        curl_close($ch);
+        try {
+            
+            $ch = curl_init($this->base . $this->endpoint);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER,  true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, ["accept: application/json","X-API-Token: 39421209-b0fc-47e5-acf9-e7e553d8b152"]);
+            $response = json_decode(curl_exec($ch));
+            curl_close($ch);
+    
+            return $response;
 
-        return $response;
+        } catch (Exception $e) {
+            MessageAuth::launchMessage('error', 'Request error!');
+            return;
+        }
     }
 
 }
